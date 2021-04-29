@@ -8,7 +8,7 @@
 
 import RxSwift
 
-protocol MVVMViewControllerBaseProtocol: class {
+protocol MVVMViewControllerBaseProtocol: AnyObject {
     associatedtype MVVMViewModelClassType: MVVMViewModel
     
     var disposeBag: DisposeBag { get set }
@@ -28,7 +28,7 @@ extension MVVMViewControllerBaseProtocol {
     }
 }
 
-protocol MVVMViewModel: class {
+protocol MVVMViewModel: AnyObject {
     var disposeBag: DisposeBag { get set }
     
     func subscribeInputs()

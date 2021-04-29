@@ -8,7 +8,7 @@
 
 import UIKit
 
-@objc protocol CoordinatorProtocol: class {
+@objc protocol CoordinatorProtocol: AnyObject {
     var navigationController: UINavigationController { get set }
 //    var childCoordinators: [CoordinatorProtocol] { get set } // 샘플에는 이런게 들어있던데 어따쓰는지 몰라서 주석처리...........
     var parentsCoordinator: CoordinatorProtocol? { get set }
@@ -19,7 +19,7 @@ protocol MainTabCoordinatorProtocol: CoordinatorProtocol {
     func didSelected(tabCoordinator: TabCoordinator)
 }
 
-protocol CoordinatorViewControllerBaseProtocol: class {
+protocol CoordinatorViewControllerBaseProtocol: AnyObject {
     associatedtype CoordinatorType: CoordinatorProtocol
     var coordinator: CoordinatorType! { get set }
 }

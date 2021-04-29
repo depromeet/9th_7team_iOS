@@ -1,6 +1,0 @@
-framework module SwipeTransitionAutoSwipeBack {
-  umbrella header "SwipeTransitionAutoSwipeBack-iOS14.4-umbrella.h"
-
-  export *
-  module * { export * }
-}

@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-protocol SplashViewProtocol: class {
+protocol SplashViewProtocol: AnyObject {
     var targetView: UIView? { get set }
     var attachedView: UIView? { get set }
     

@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol BrandSelectServiceProtocol: class {
+protocol BrandSelectServiceProtocol: AnyObject {
     func getAllBrandInfos() -> [BrandObjectModel]
 }
 

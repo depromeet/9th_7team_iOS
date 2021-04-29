@@ -1,8 +1,8 @@
 ${PODS_ROOT}/Target Support Files/Pods-myRecipickTests/Pods-myRecipickTests-frameworks.sh
-${BUILT_PRODUCTS_DIR}/Alamofire-iOS14.4/Alamofire.framework
-${BUILT_PRODUCTS_DIR}/RxAlamofire-iOS14.4/RxAlamofire.framework
-${BUILT_PRODUCTS_DIR}/RxCocoa-iOS14.4/RxCocoa.framework
-${BUILT_PRODUCTS_DIR}/RxRelay-iOS14.4/RxRelay.framework
-${BUILT_PRODUCTS_DIR}/RxSwift-iOS14.4/RxSwift.framework
-${BUILT_PRODUCTS_DIR}/SwipeTransition-iOS14.4/SwipeTransition.framework
-${BUILT_PRODUCTS_DIR}/SwipeTransitionAutoSwipeBack-iOS14.4/SwipeTransitionAutoSwipeBack.framework
+${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework
+${BUILT_PRODUCTS_DIR}/RxAlamofire/RxAlamofire.framework
+${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework
+${BUILT_PRODUCTS_DIR}/RxRelay/RxRelay.framework
+${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework
+${BUILT_PRODUCTS_DIR}/SwipeTransition/SwipeTransition.framework
+${BUILT_PRODUCTS_DIR}/SwipeTransitionAutoSwipeBack/SwipeTransitionAutoSwipeBack.framework
