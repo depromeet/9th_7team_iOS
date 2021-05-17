@@ -8,6 +8,8 @@
 
 import UIKit
 import SnapKit
+import RxSwift
+import RxCocoa
 
 protocol MenuCategoryBarDelegate: AnyObject {
     func tapTabbar(scrollTo index: Int)
@@ -24,28 +26,22 @@ class MenuCategoryBar: BaseCustomView {
         return view
     }()
     
-    var indicatorViewLeadingConstraint: NSLayoutConstraint!
-    var indicatorViewWidthConstraint: NSLayoutConstraint!
-    
-    var menuList: [String] = [] {
-        didSet {
-            tabbarCollectionView.reloadData()
-            let indexPath = IndexPath(item: 0, section: 0)
-            tabbarCollectionView.selectItem(at: indexPath, animated: false, scrollPosition: [])
-        }
-    }
+    let categories = BehaviorRelay<[String]>(value: [])
+    var disposeBag = DisposeBag()
     
     weak var delegate: MenuCategoryBarDelegate?
 
     override init(frame: CGRect) {
         super.init(frame: frame)
         initTabBar()
+        bind()
         
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         initTabBar()
+        bind()
     }
     
     private func initTabBar() {
@@ -67,6 +63,8 @@ class MenuCategoryBar: BaseCustomView {
     }
     
     func moveIndicator(in index: Int) {
+        let indexPath = IndexPath(item: index, section: 0)
+        tabbarCollectionView.selectItem(at: indexPath, animated: false, scrollPosition: [])
         indicatorView.snp.updateConstraints { snp in
             snp.leading.equalTo(self.snp.leading).offset((Int(self.frame.width) / 4) * index + 12 + 12)
         }
@@ -76,36 +74,30 @@ class MenuCategoryBar: BaseCustomView {
     }
 }
 
-extension MenuCategoryBar: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MenuCategoryCollectionViewCell.identifier, for: indexPath) as? MenuCategoryCollectionViewCell else { return UICollectionViewCell() }
-        let item = menuList[indexPath.row]
-        cell.bind(item)
-        return cell
-    }
+extension MenuCategoryBar {
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return menuList.count
+    private func bind() {
+        disposeBag.insert(
+            categories.asObservable()
+                .bind(to: tabbarCollectionView.rx.items(cellIdentifier: MenuCategoryCollectionViewCell.identifier, cellType: MenuCategoryCollectionViewCell.self)) { index, element, cell in
+                    cell.bind(element)
+                },
+            tabbarCollectionView.rx.setDelegate(self),
+            tabbarCollectionView.rx.itemSelected.bind(onNext: { [weak self] indexPath in
+                guard let self = self else { return }
+                self.moveIndicator(in: indexPath.item)
+                self.delegate?.tapTabbar(scrollTo: indexPath.item)
+            }),
+            
+            tabbarCollectionView.rx.itemDeselected.bind(onNext: { [weak self] indexPath in
+                guard let cell = self?.tabbarCollectionView.cellForItem(at: indexPath) as? MenuCategoryCollectionViewCell else { return }
+                cell.titleLabel.textColor = Colors.grayScale66.color
+            })
+        )
+//        let indexPath = IndexPath(item: 0, section: 0)
+//        tabbarCollectionView.selectItem(at: indexPath, animated: false, scrollPosition: [])
     }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: self.frame.width / 4, height: 55)
-        
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        moveIndicator(in: indexPath.row)
-        delegate?.tapTabbar(scrollTo: indexPath.row)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        guard let cell = collectionView.cellForItem(at: indexPath) as? MenuCategoryCollectionViewCell else {return}
-        cell.titleLabel.textColor = Colors.grayScale66.color
-    }
-}
 
-extension MenuCategoryBar: UICollectionViewDelegate {
-    
 }
 
 // MARK: - UICollectionViewDelegateFlowLayout
@@ -117,5 +109,9 @@ extension MenuCategoryBar: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: self.frame.width / 4, height: 50)
     }
 }

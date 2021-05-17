@@ -7,11 +7,14 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class CustomViewController: UIViewController, CoordinatorViewControllerProtocol, ClassIdentifiable {
     
     static func makeViewController(coordinator: CustomCoordinator) -> CustomViewController {
         let vc = CustomViewController(nibName: self.identifier, bundle: nil)
+        vc.viewModel = CustomViewModel()
         vc.coordinator = coordinator
         return vc
     }
@@ -27,12 +30,8 @@ class CustomViewController: UIViewController, CoordinatorViewControllerProtocol,
     // MARK: property
     
     var coordinator: CustomCoordinator!
-    
-    private var menuList: [String: Any] = [:] {
-        didSet {
-            menuCollectionView.reloadData()
-        }
-    }
+    var viewModel: CustomViewModel!
+    var disposeBag = DisposeBag()
     
     // MARK: lifeCycle
     
@@ -45,6 +44,7 @@ class CustomViewController: UIViewController, CoordinatorViewControllerProtocol,
         initNavigationView()
         initCategoryView()
         initCollectionView()
+        bind()
     }
     
     // MARK: func
@@ -58,15 +58,14 @@ class CustomViewController: UIViewController, CoordinatorViewControllerProtocol,
     
     private func initCategoryView() {
         menuCategoryView.delegate = self
-        menuList = [
-            "샌드위치": ["로스트 치킨 베이컨", "로스트 치킨 아보카도", "로스트 치킨", "스테이크 & 치즈"],
-            "찹샐러드": ["로스트 치킨", "스테이크 & 치즈", "터키베이컨 아보카도", "로티세리 치킨"]
-        ]
-        menuCategoryView.menuList = menuList.keys.sorted()
+        viewModel.menuListObservable
+            .map { $0.keys.sorted() }
+            .bind(to: menuCategoryView.categories)
+            .disposed(by: disposeBag)
     }
     
     private func initCollectionView() {
-        menuCollectionView.register(UINib(nibName: MenuCollectionViewCell.identifier, bundle: nil), forCellWithReuseIdentifier: MenuCollectionViewCell.identifier)
+        menuCollectionView.register(UINib(nibName: MenuContainerCollectionViewCell.identifier, bundle: nil), forCellWithReuseIdentifier: MenuContainerCollectionViewCell.identifier)
     }
     
 }
@@ -89,15 +88,16 @@ extension CustomViewController: MenuCategoryBarDelegate {
 
 
 // MARK: - UICollectionViewDataSource
-extension CustomViewController: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MenuCollectionViewCell.identifier, for: indexPath) as? MenuCollectionViewCell else { return .init() }
-        cell.menuList(list: Array(menuList)[indexPath.item].value as? [String])
-        return cell
-    }
+extension CustomViewController {
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return menuList.count
+    private func bind() {
+        disposeBag.insert(
+            viewModel.menuListObservable.bind(to: menuCollectionView.rx.items(cellIdentifier: MenuContainerCollectionViewCell.identifier, cellType: MenuContainerCollectionViewCell.self)) { index, element, cell in
+                let item = element.value as? [String]
+                cell.menuList(list: item, on: self)
+            },
+            menuCollectionView.rx.setDelegate(self)
+        )
     }
 }
 
