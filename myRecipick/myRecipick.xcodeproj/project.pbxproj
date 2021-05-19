@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		393534E02655479A00C457EA /* CustomOptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 393534DE2655479A00C457EA /* CustomOptionViewController.swift */; };
+		393534E12655479A00C457EA /* CustomOptionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 393534DF2655479A00C457EA /* CustomOptionViewController.xib */; };
+		393534E3265547F800C457EA /* CustomOptionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 393534E2265547F800C457EA /* CustomOptionViewModel.swift */; };
 		39A4492126426D90001DD3C4 /* ActivityIndicatorable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A4492026426D90001DD3C4 /* ActivityIndicatorable.swift */; };
 		39A4492526443907001DD3C4 /* CustomViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 39A4492426443907001DD3C4 /* CustomViewController.xib */; };
 		39A4492726443D70001DD3C4 /* BaseCustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A4492626443D70001DD3C4 /* BaseCustomView.swift */; };
@@ -167,6 +170,9 @@
 
 /* Begin PBXFileReference section */
 		332551BBBA3CA22FC8109CE0 /* Pods-myRecipick.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-myRecipick.debug.xcconfig"; path = "Target Support Files/Pods-myRecipick/Pods-myRecipick.debug.xcconfig"; sourceTree = "<group>"; };
+		393534DE2655479A00C457EA /* CustomOptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomOptionViewController.swift; sourceTree = "<group>"; };
+		393534DF2655479A00C457EA /* CustomOptionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomOptionViewController.xib; sourceTree = "<group>"; };
+		393534E2265547F800C457EA /* CustomOptionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomOptionViewModel.swift; sourceTree = "<group>"; };
 		39A4492026426D90001DD3C4 /* ActivityIndicatorable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorable.swift; sourceTree = "<group>"; };
 		39A4492426443907001DD3C4 /* CustomViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomViewController.xib; sourceTree = "<group>"; };
 		39A4492626443D70001DD3C4 /* BaseCustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCustomView.swift; sourceTree = "<group>"; };
@@ -488,6 +494,9 @@
 				39D9D5A926524B4C000434B7 /* MenuListViewModel.swift */,
 				39D9D5A3264EBB8C000434B7 /* MenuListViewController.swift */,
 				39D9D5A4264EBB8C000434B7 /* MenuListViewController.xib */,
+				393534E2265547F800C457EA /* CustomOptionViewModel.swift */,
+				393534DE2655479A00C457EA /* CustomOptionViewController.swift */,
+				393534DF2655479A00C457EA /* CustomOptionViewController.xib */,
 			);
 			path = Custom;
 			sourceTree = "<group>";
@@ -902,6 +911,7 @@
 				78C8C19E2615C81A00F84CAB /* Localizable.strings in Resources */,
 				786ACD6E2653D9350034E2AA /* DetailHeaderTableViewCell.xib in Resources */,
 				7815C5C226510D2000581D4E /* DetailTableViewCell.xib in Resources */,
+				393534E12655479A00C457EA /* CustomOptionViewController.xib in Resources */,
 				78AC52B42621D632002B7C02 /* Assets.xcassets in Resources */,
 				7817E838263E8C5E003AC910 /* YourPage.storyboard in Resources */,
 				39A4492B26443F76001DD3C4 /* CustomNavigationView.xib in Resources */,
@@ -1096,6 +1106,7 @@
 				4F9DC6C92625168C00609CF0 /* TabCoordinator.swift in Sources */,
 				39D9D59F264EB8BC000434B7 /* MenuContainerCollectionViewCell.swift in Sources */,
 				4F9DC6E92625204200609CF0 /* HomeViewController.swift in Sources */,
+				393534E02655479A00C457EA /* CustomOptionViewController.swift in Sources */,
 				78759795263C1BFF00305227 /* BrandSelectTableViewCell.swift in Sources */,
 				4F5C5F9226242BBD003D94E2 /* ClassIdentifiable.swift in Sources */,
 				785C7ACC263D3D2900A163CC /* UIView + RemoveAllSubViews.swift in Sources */,
@@ -1125,6 +1136,7 @@
 				78E9B3A7264BF9B70019854B /* KeyChainKeyDefine.swift in Sources */,
 				39D9D5AA26524B4C000434B7 /* MenuListViewModel.swift in Sources */,
 				7817E83C263E8CE7003AC910 /* YourPageViewModel.swift in Sources */,
+				393534E3265547F800C457EA /* CustomOptionViewModel.swift in Sources */,
 				39A4492126426D90001DD3C4 /* ActivityIndicatorable.swift in Sources */,
 				785C7AC6263D3CD400A163CC /* CommonAlertView.swift in Sources */,
 				4F5C5F6426242112003D94E2 /* UserDefaultKeyDefine.swift in Sources */,

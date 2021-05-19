@@ -176,8 +176,9 @@ extension TabCoordinator: UITabBarControllerDelegate {
         switch viewController {
         case self.customViewController:
             let vc = CustomViewController.makeViewController(coordinator: self.customCoordinator)
-            vc.modalPresentationStyle = .fullScreen
-            rootViewController.present(vc, animated: true, completion: nil)
+            let nc = UINavigationController(rootViewController: vc)
+            nc.modalPresentationStyle = .fullScreen
+            rootViewController.present(nc, animated: true, completion: nil)
             return false
         default: break
         }

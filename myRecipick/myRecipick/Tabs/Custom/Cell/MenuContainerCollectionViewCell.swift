@@ -19,7 +19,7 @@ class MenuContainerCollectionViewCell: UICollectionViewCell, ClassIdentifiable {
     
     func menuList(list: [String]?, on parent: UIViewController) {
         guard let list = list else { return }
-        let menuVC = MenuListViewController.makeViewController(menuList: list)
+        let menuVC = MenuListViewController.makeViewController(menuList: list, parentVC: parent)
         menuVC.view.frame = baseView.frame
         baseView.addSubview(menuVC.view)
         parent.addChild(menuVC)

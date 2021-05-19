@@ -80,6 +80,7 @@ extension MenuCategoryBar {
         disposeBag.insert(
             categories.asObservable()
                 .bind(to: tabbarCollectionView.rx.items(cellIdentifier: MenuCategoryCollectionViewCell.identifier, cellType: MenuCategoryCollectionViewCell.self)) { index, element, cell in
+                    if index == 0 { cell.isSelected = true }
                     cell.bind(element)
                 },
             tabbarCollectionView.rx.setDelegate(self),
@@ -94,8 +95,6 @@ extension MenuCategoryBar {
                 cell.titleLabel.textColor = Colors.grayScale66.color
             })
         )
-//        let indexPath = IndexPath(item: 0, section: 0)
-//        tabbarCollectionView.selectItem(at: indexPath, animated: false, scrollPosition: [])
     }
 
 }

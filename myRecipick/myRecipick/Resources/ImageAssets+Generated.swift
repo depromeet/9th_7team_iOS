@@ -23,6 +23,7 @@ internal enum Images {
   internal static let editCheck = ImageAsset(name: "editCheck")
   internal static let editNonCheck = ImageAsset(name: "editNonCheck")
   internal static let evaCloseFill = ImageAsset(name: "evaCloseFill")
+  internal static let iconClose = ImageAsset(name: "iconClose")
   internal static let iconPlus = ImageAsset(name: "iconPlus")
   internal static let iconSwitch = ImageAsset(name: "iconSwitch")
   internal static let iconsListEmpty = ImageAsset(name: "iconsListEmpty")

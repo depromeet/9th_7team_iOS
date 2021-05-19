@@ -13,6 +13,7 @@ import RxCocoa
 class MenuListViewModel {
     
     private let menuList = BehaviorRelay<[String]>(value: [])
+    
     var menuListObservable: Observable<[String]> {
         return menuList.asObservable()
     }

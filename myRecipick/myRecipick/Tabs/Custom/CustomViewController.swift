@@ -45,6 +45,8 @@ class CustomViewController: UIViewController, CoordinatorViewControllerProtocol,
         initCategoryView()
         initCollectionView()
         bind()
+        
+//        viewModel.fetchMenu(with: "3fa85f64-5717-4562-b3fc-2c963f66afa6")
     }
     
     // MARK: func
@@ -52,7 +54,7 @@ class CustomViewController: UIViewController, CoordinatorViewControllerProtocol,
     private func initNavigationView() {
         navigationController?.setNavigationBarHidden(true, animated: false)
         navigationView.setTitle("메뉴선택")
-        navigationView.setLeftButtonText("닫기")
+        navigationView.setLeftButtonImage("iconsNavigation24ArrowLeft")
         navigationView.leftButton.addTarget(self, action: #selector(dismiss(_:)), for: .touchUpInside)
     }
     
@@ -62,6 +64,7 @@ class CustomViewController: UIViewController, CoordinatorViewControllerProtocol,
             .map { $0.keys.sorted() }
             .bind(to: menuCategoryView.categories)
             .disposed(by: disposeBag)
+        menuCategoryView.moveIndicator(in: 0) // 서버에서 값 받아오면 바꾸기
     }
     
     private func initCollectionView() {

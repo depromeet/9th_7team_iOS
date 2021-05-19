@@ -34,6 +34,7 @@ class CustomNavigationView: BaseCustomView {
 extension CustomNavigationView {
     func setTitle(_ text: String) {
         titleLabel.text = text
+        titleLabel.font = .myRecipickFont(.subTitle1)
     }
     
     func setLeftButtonText(_ text: String) {
@@ -41,9 +42,12 @@ extension CustomNavigationView {
         leftButton.setTitle(text, for: .normal)
     }
     
-    func setLeftButtonImage(_ imageName: String) {
+    func setLeftButtonImage(_ imageName: String, color: UIColor = Colors.grayScale33.color) {
         leftButton.isHidden = false
-        leftButton.setImage(UIImage(named: imageName), for: .normal)
+        leftButton.setTitle("", for: .normal)
+        let image = UIImage(named: imageName)?.withRenderingMode(.alwaysTemplate)
+        leftButton.setImage(image, for: .normal)
+        leftButton.tintColor = color
     }
     
     func setRightButtonText(_ text: String) {
@@ -51,8 +55,11 @@ extension CustomNavigationView {
         rightButton.setTitle(text, for: .normal)
     }
     
-    func setRightButtonImage(_ imageName: String) {
+    func setRightButtonImage(_ imageName: String, color: UIColor = Colors.grayScale33.color) {
         rightButton.isHidden = false
-        rightButton.setImage(UIImage(named: imageName), for: .normal)
+        rightButton.setTitle("", for: .normal)
+        let image = UIImage(named: imageName)?.withRenderingMode(.alwaysTemplate)
+        rightButton.setImage(image, for: .normal)
+        rightButton.tintColor = color
     }
 }
