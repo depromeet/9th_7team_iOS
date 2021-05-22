@@ -10,6 +10,10 @@
 		393534E02655479A00C457EA /* CustomOptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 393534DE2655479A00C457EA /* CustomOptionViewController.swift */; };
 		393534E12655479A00C457EA /* CustomOptionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 393534DF2655479A00C457EA /* CustomOptionViewController.xib */; };
 		393534E3265547F800C457EA /* CustomOptionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 393534E2265547F800C457EA /* CustomOptionViewModel.swift */; };
+		393ACCD12657B5C7003E8A13 /* CustomOptionTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 393ACCCF2657B5C7003E8A13 /* CustomOptionTitleCell.swift */; };
+		393ACCD22657B5C7003E8A13 /* CustomOptionTitleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 393ACCD02657B5C7003E8A13 /* CustomOptionTitleCell.xib */; };
+		393ACCD92657B73D003E8A13 /* CustomOptionSubTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 393ACCD72657B73D003E8A13 /* CustomOptionSubTitleCell.swift */; };
+		393ACCDA2657B73D003E8A13 /* CustomOptionSubTitleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 393ACCD82657B73D003E8A13 /* CustomOptionSubTitleCell.xib */; };
 		39A4492126426D90001DD3C4 /* ActivityIndicatorable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A4492026426D90001DD3C4 /* ActivityIndicatorable.swift */; };
 		39A4492526443907001DD3C4 /* CustomViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 39A4492426443907001DD3C4 /* CustomViewController.xib */; };
 		39A4492726443D70001DD3C4 /* BaseCustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A4492626443D70001DD3C4 /* BaseCustomView.swift */; };
@@ -173,6 +177,10 @@
 		393534DE2655479A00C457EA /* CustomOptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomOptionViewController.swift; sourceTree = "<group>"; };
 		393534DF2655479A00C457EA /* CustomOptionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomOptionViewController.xib; sourceTree = "<group>"; };
 		393534E2265547F800C457EA /* CustomOptionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomOptionViewModel.swift; sourceTree = "<group>"; };
+		393ACCCF2657B5C7003E8A13 /* CustomOptionTitleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomOptionTitleCell.swift; sourceTree = "<group>"; };
+		393ACCD02657B5C7003E8A13 /* CustomOptionTitleCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomOptionTitleCell.xib; sourceTree = "<group>"; };
+		393ACCD72657B73D003E8A13 /* CustomOptionSubTitleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomOptionSubTitleCell.swift; sourceTree = "<group>"; };
+		393ACCD82657B73D003E8A13 /* CustomOptionSubTitleCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomOptionSubTitleCell.xib; sourceTree = "<group>"; };
 		39A4492026426D90001DD3C4 /* ActivityIndicatorable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorable.swift; sourceTree = "<group>"; };
 		39A4492426443907001DD3C4 /* CustomViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomViewController.xib; sourceTree = "<group>"; };
 		39A4492626443D70001DD3C4 /* BaseCustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCustomView.swift; sourceTree = "<group>"; };
@@ -338,9 +346,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		393ACCCE2657B584003E8A13 /* Option */ = {
+			isa = PBXGroup;
+			children = (
+				393ACCCF2657B5C7003E8A13 /* CustomOptionTitleCell.swift */,
+				393ACCD02657B5C7003E8A13 /* CustomOptionTitleCell.xib */,
+				393ACCD72657B73D003E8A13 /* CustomOptionSubTitleCell.swift */,
+				393ACCD82657B73D003E8A13 /* CustomOptionSubTitleCell.xib */,
+			);
+			path = Option;
+			sourceTree = "<group>";
+		};
 		39D9D5A1264EB8CE000434B7 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				393ACCCE2657B584003E8A13 /* Option */,
 				39D9D597264EA7F6000434B7 /* MenuCategoryCollectionViewCell.swift */,
 				39D9D598264EA7F6000434B7 /* MenuCategoryCollectionViewCell.xib */,
 				39D9D59D264EB8BC000434B7 /* MenuContainerCollectionViewCell.swift */,
@@ -904,6 +924,7 @@
 				78D76824262D85390010A07E /* SplashView.xib in Resources */,
 				78644AB0263444D800C16C47 /* NotoSansKR-Regular.otf in Resources */,
 				7817E85B263EAF38003AC910 /* YourPageZeroYourrecipeView.xib in Resources */,
+				393ACCD22657B5C7003E8A13 /* CustomOptionTitleCell.xib in Resources */,
 				78AC524A2621CCBD002B7C02 /* .swiftlint.yml in Resources */,
 				4FF549152640E6620086E30C /* CustomMenuCardCollectionViewCell.xib in Resources */,
 				78C8C1642615C45600F84CAB /* LaunchScreen.storyboard in Resources */,
@@ -925,6 +946,7 @@
 				78FC10892658F1A1005776A4 /* BrandSelectCollectionViewCell.xib in Resources */,
 				78644AAD263444D800C16C47 /* NotoSansKR-Bold.otf in Resources */,
 				39A4492526443907001DD3C4 /* CustomViewController.xib in Resources */,
+				393ACCDA2657B73D003E8A13 /* CustomOptionSubTitleCell.xib in Resources */,
 				39D9D59C264EAA09000434B7 /* MenuCategoryBar.xib in Resources */,
 				78AC52BC2621D75D002B7C02 /* Colors.xcassets in Resources */,
 			);
@@ -1101,6 +1123,7 @@
 				39D9D5B026529415000434B7 /* CustomViewModel.swift in Sources */,
 				4F9DC6CE262516A900609CF0 /* CoordinatorProtocol.swift in Sources */,
 				4F5C5F9826242BF9003D94E2 /* Data + HexString.swift in Sources */,
+				393ACCD92657B73D003E8A13 /* CustomOptionSubTitleCell.swift in Sources */,
 				7817E830263E7CED003AC910 /* NSMutableAttributeString + InSpecificString.swift in Sources */,
 				4F9DC6F32625205900609CF0 /* YourPageViewController.swift in Sources */,
 				4F9DC6C92625168C00609CF0 /* TabCoordinator.swift in Sources */,
@@ -1113,6 +1136,7 @@
 				78575E5E262C4F9E0060BB63 /* CoordinatorMVVMProtocol.swift in Sources */,
 				78D7681B262D84C00010A07E /* SplashViewProtocol.swift in Sources */,
 				4F5C5F692624212A003D94E2 /* NotificationNameDefine.swift in Sources */,
+				393ACCD12657B5C7003E8A13 /* CustomOptionTitleCell.swift in Sources */,
 				4F163C912644CE8700739107 /* ColorAssets+Generated.swift in Sources */,
 				4F5C5F9D26242C76003D94E2 /* JsonDataProtocol.swift in Sources */,
 				39D9D5AD2652522D000434B7 /* MenuCollectionViewCell.swift in Sources */,

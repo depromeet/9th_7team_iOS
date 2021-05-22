@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -11,12 +11,12 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CustomOptionViewController" customModule="myRecipick" customModuleProvider="target">
             <connections>
+                <outlet property="collectionView" destination="rEq-jQ-2MR" id="Ki7-zh-bfv"/>
                 <outlet property="doneButton" destination="ciS-lc-dvd" id="xYQ-ku-HZj"/>
                 <outlet property="navigationView" destination="1T9-v1-e7a" id="Bex-vE-zoO"/>
                 <outlet property="resetButton" destination="7Ij-jx-opJ" id="Wwa-Rm-fGi"/>
                 <outlet property="resetView" destination="HBS-hH-FYe" id="Cgf-2Z-X5X"/>
                 <outlet property="tableTopView" destination="gEE-H8-4d1" id="5zi-IM-WdV"/>
-                <outlet property="tableView" destination="fvP-6J-2m5" id="Xy6-tf-icE"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -78,27 +78,33 @@
                         <constraint firstItem="ciS-lc-dvd" firstAttribute="leading" secondItem="L5E-2h-83w" secondAttribute="leading" constant="24" id="t9t-8G-YbN"/>
                     </constraints>
                 </view>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fvP-6J-2m5">
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="rEq-jQ-2MR">
                     <rect key="frame" x="0.0" y="316" width="390" height="428"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                </tableView>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ulK-F0-iVv">
+                        <size key="itemSize" width="128" height="128"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                </collectionView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="fvP-6J-2m5" firstAttribute="top" secondItem="gEE-H8-4d1" secondAttribute="bottom" id="04r-N3-XbX"/>
+                <constraint firstItem="rEq-jQ-2MR" firstAttribute="top" secondItem="gEE-H8-4d1" secondAttribute="bottom" id="04i-Rh-SVT"/>
                 <constraint firstItem="gEE-H8-4d1" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="0ZO-dP-FET"/>
                 <constraint firstItem="1T9-v1-e7a" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="AlS-lD-r8Z"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="1T9-v1-e7a" secondAttribute="trailing" id="Ezm-gd-YAH"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="fvP-6J-2m5" secondAttribute="trailing" id="G94-Vz-Mht"/>
                 <constraint firstAttribute="bottom" secondItem="L5E-2h-83w" secondAttribute="bottom" id="J8I-bg-uaG"/>
                 <constraint firstItem="gEE-H8-4d1" firstAttribute="top" secondItem="1T9-v1-e7a" secondAttribute="bottom" id="OnE-vq-HQp"/>
                 <constraint firstItem="L5E-2h-83w" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="S11-ef-hX4"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="L5E-2h-83w" secondAttribute="trailing" id="Ud2-ws-6EQ"/>
-                <constraint firstItem="L5E-2h-83w" firstAttribute="top" secondItem="fvP-6J-2m5" secondAttribute="bottom" id="VZs-2O-VPO"/>
+                <constraint firstItem="L5E-2h-83w" firstAttribute="top" secondItem="rEq-jQ-2MR" secondAttribute="bottom" id="czN-WE-VOz"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="rEq-jQ-2MR" secondAttribute="trailing" id="nfu-pW-l6c"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="gEE-H8-4d1" secondAttribute="trailing" id="sR0-DS-xcX"/>
-                <constraint firstItem="fvP-6J-2m5" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="woU-T3-ldd"/>
                 <constraint firstItem="1T9-v1-e7a" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="zIR-O4-eBa"/>
+                <constraint firstItem="rEq-jQ-2MR" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="zdQ-cf-OKC"/>
             </constraints>
             <point key="canvasLocation" x="48" y="129"/>
         </view>
