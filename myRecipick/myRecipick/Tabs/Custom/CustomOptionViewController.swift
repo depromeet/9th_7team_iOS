@@ -29,11 +29,18 @@ class CustomOptionViewController: UIViewController, ClassIdentifiable {
         OptionSection(title: "치즈", isSingleSelection: true, items: [OptionItem(title: "치즈1"), OptionItem(title: "치즈2"), OptionItem(title: "치즈3")]),
         OptionSection(title: "야채", items: [OptionItem(title: "야채1"), OptionItem(title: "야채2"), OptionItem(title: "야채3"), OptionItem(title: "야채4"), OptionItem(title: "야채5"), OptionItem(title: "야채6")]),
         OptionSection(title: "소스", isSingleSelection: true, items: [OptionItem(title: "소스1"), OptionItem(title: "소스2"), OptionItem(title: "소스3")]),
+        OptionSection(title: "추가 입력", items: [OptionItem(title: "이름", type: .additional)])
     ]
     
     lazy var dataSource = OptionDatasource(collectionView: collectionView) { (collectionView, indexPath, item) -> UICollectionViewCell? in
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CustomOptionSubTitleCell.identifier, for: indexPath) as? CustomOptionSubTitleCell else { fatalError() }
-        return cell
+        switch item.type {
+        case .option:
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CustomOptionSubTitleCell.identifier, for: indexPath) as? CustomOptionSubTitleCell else { fatalError() }
+            return cell
+        case .additional:
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CustomOptionAdditionalCell.identifier, for: indexPath) as? CustomOptionAdditionalCell else { fatalError() }
+            return cell
+        }
     } selectClosure: { [weak self] in
         self?.updateSnapshot()
     }
@@ -70,6 +77,7 @@ class CustomOptionViewController: UIViewController, ClassIdentifiable {
         collectionView.collectionViewLayout = createCollectionViewLayout()
         collectionView.register(UINib(nibName: CustomOptionTitleCell.identifier, bundle: nil), forSupplementaryViewOfKind: "header", withReuseIdentifier: CustomOptionTitleCell.identifier)
         collectionView.register(UINib(nibName: CustomOptionSubTitleCell.identifier, bundle: nil), forCellWithReuseIdentifier: CustomOptionSubTitleCell.identifier)
+        collectionView.register(UINib(nibName: CustomOptionAdditionalCell.identifier, bundle: nil), forCellWithReuseIdentifier: CustomOptionAdditionalCell.identifier)
     }
     
     private func initTableBottomView() {
@@ -123,47 +131,6 @@ extension CustomOptionViewController {
     }
 }
 
-
-class OptionSection: Hashable {
-    let title: String
-    let isSingleSelection: Bool
-    var isExpanded = false
-    var items: [OptionItem] = []
-    private let uuid = UUID()
-    
-    public func hash(into hasher: inout Hasher) {
-         hasher.combine(ObjectIdentifier(self).hashValue)
-    }
-    
-    init(title: String, isSingleSelection: Bool = false, items: [OptionItem]) {
-        self.title = title
-        self.isSingleSelection = isSingleSelection
-        self.items = items
-    }
-    
-    static func == (lhs: OptionSection, rhs: OptionSection) -> Bool {
-        lhs.hashValue == rhs.hashValue
-    }
-}
-
-class OptionItem: Hashable {
-    let title: String
-    var isSelected = false
-    private let uuid = UUID()
-    
-    public func hash(into hasher: inout Hasher) {
-         hasher.combine(ObjectIdentifier(self).hashValue)
-    }
-    
-    init(title: String) {
-        self.title = title
-    }
-    
-    static func == (lhs: OptionItem, rhs: OptionItem) -> Bool {
-        lhs.hashValue == rhs.hashValue
-    }
-}
-
 class OptionDatasource: UICollectionViewDiffableDataSource<OptionSection, OptionItem>, UICollectionViewDelegate {
     
     var headerSelectClosure: (() -> Void)?
@@ -177,13 +144,21 @@ class OptionDatasource: UICollectionViewDiffableDataSource<OptionSection, Option
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CustomOptionSubTitleCell.identifier, for: indexPath) as? CustomOptionSubTitleCell else { fatalError() }
-        let item = self.itemIdentifier(for: indexPath)
-        if item?.isSelected ?? false {
-            collectionView.selectItem(at: indexPath, animated: false, scrollPosition: .init(rawValue: 0))
+        let item = itemIdentifier(for: indexPath)
+        switch item?.type {
+        case .option:
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CustomOptionSubTitleCell.identifier, for: indexPath) as? CustomOptionSubTitleCell else { fatalError() }
+            let item = self.itemIdentifier(for: indexPath)
+            if item?.isSelected ?? false {
+                collectionView.selectItem(at: indexPath, animated: false, scrollPosition: .init(rawValue: 0))
+            }
+            return cell
+        case .additional:
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CustomOptionAdditionalCell.identifier, for: indexPath) as? CustomOptionAdditionalCell else { fatalError() }
+            return cell
+        default:
+            return .init()
         }
-        
-        return cell
     }
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {

@@ -10,6 +10,9 @@
 		393534E02655479A00C457EA /* CustomOptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 393534DE2655479A00C457EA /* CustomOptionViewController.swift */; };
 		393534E12655479A00C457EA /* CustomOptionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 393534DF2655479A00C457EA /* CustomOptionViewController.xib */; };
 		393534E3265547F800C457EA /* CustomOptionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 393534E2265547F800C457EA /* CustomOptionViewModel.swift */; };
+		393534E72658E3BF00C457EA /* MenuOptionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 393534E62658E3BF00C457EA /* MenuOptionModel.swift */; };
+		393534EB2658FF5300C457EA /* CustomOptionAdditionalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 393534E92658FF5300C457EA /* CustomOptionAdditionalCell.swift */; };
+		393534EC2658FF5300C457EA /* CustomOptionAdditionalCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 393534EA2658FF5300C457EA /* CustomOptionAdditionalCell.xib */; };
 		393ACCD12657B5C7003E8A13 /* CustomOptionTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 393ACCCF2657B5C7003E8A13 /* CustomOptionTitleCell.swift */; };
 		393ACCD22657B5C7003E8A13 /* CustomOptionTitleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 393ACCD02657B5C7003E8A13 /* CustomOptionTitleCell.xib */; };
 		393ACCD92657B73D003E8A13 /* CustomOptionSubTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 393ACCD72657B73D003E8A13 /* CustomOptionSubTitleCell.swift */; };
@@ -177,6 +180,9 @@
 		393534DE2655479A00C457EA /* CustomOptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomOptionViewController.swift; sourceTree = "<group>"; };
 		393534DF2655479A00C457EA /* CustomOptionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomOptionViewController.xib; sourceTree = "<group>"; };
 		393534E2265547F800C457EA /* CustomOptionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomOptionViewModel.swift; sourceTree = "<group>"; };
+		393534E62658E3BF00C457EA /* MenuOptionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuOptionModel.swift; sourceTree = "<group>"; };
+		393534E92658FF5300C457EA /* CustomOptionAdditionalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomOptionAdditionalCell.swift; sourceTree = "<group>"; };
+		393534EA2658FF5300C457EA /* CustomOptionAdditionalCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomOptionAdditionalCell.xib; sourceTree = "<group>"; };
 		393ACCCF2657B5C7003E8A13 /* CustomOptionTitleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomOptionTitleCell.swift; sourceTree = "<group>"; };
 		393ACCD02657B5C7003E8A13 /* CustomOptionTitleCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomOptionTitleCell.xib; sourceTree = "<group>"; };
 		393ACCD72657B73D003E8A13 /* CustomOptionSubTitleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomOptionSubTitleCell.swift; sourceTree = "<group>"; };
@@ -346,6 +352,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		393534E82658FF0800C457EA /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				39D9D597264EA7F6000434B7 /* MenuCategoryCollectionViewCell.swift */,
+				39D9D598264EA7F6000434B7 /* MenuCategoryCollectionViewCell.xib */,
+				39D9D59D264EB8BC000434B7 /* MenuContainerCollectionViewCell.swift */,
+				39D9D59E264EB8BC000434B7 /* MenuContainerCollectionViewCell.xib */,
+				39D9D5AB2652522D000434B7 /* MenuCollectionViewCell.swift */,
+				39D9D5AC2652522D000434B7 /* MenuCollectionViewCell.xib */,
+			);
+			path = Menu;
+			sourceTree = "<group>";
+		};
 		393ACCCE2657B584003E8A13 /* Option */ = {
 			isa = PBXGroup;
 			children = (
@@ -353,6 +372,8 @@
 				393ACCD02657B5C7003E8A13 /* CustomOptionTitleCell.xib */,
 				393ACCD72657B73D003E8A13 /* CustomOptionSubTitleCell.swift */,
 				393ACCD82657B73D003E8A13 /* CustomOptionSubTitleCell.xib */,
+				393534E92658FF5300C457EA /* CustomOptionAdditionalCell.swift */,
+				393534EA2658FF5300C457EA /* CustomOptionAdditionalCell.xib */,
 			);
 			path = Option;
 			sourceTree = "<group>";
@@ -361,12 +382,7 @@
 			isa = PBXGroup;
 			children = (
 				393ACCCE2657B584003E8A13 /* Option */,
-				39D9D597264EA7F6000434B7 /* MenuCategoryCollectionViewCell.swift */,
-				39D9D598264EA7F6000434B7 /* MenuCategoryCollectionViewCell.xib */,
-				39D9D59D264EB8BC000434B7 /* MenuContainerCollectionViewCell.swift */,
-				39D9D59E264EB8BC000434B7 /* MenuContainerCollectionViewCell.xib */,
-				39D9D5AB2652522D000434B7 /* MenuCollectionViewCell.swift */,
-				39D9D5AC2652522D000434B7 /* MenuCollectionViewCell.xib */,
+				393534E82658FF0800C457EA /* Menu */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -452,6 +468,7 @@
 				78BE67F326245F5700FDDFD8 /* APIError.swift */,
 				78D76835262D8C1C0010A07E /* BrandModel.swift */,
 				39D9D5A7264EC521000434B7 /* MenuModel.swift */,
+				393534E62658E3BF00C457EA /* MenuOptionModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -941,6 +958,7 @@
 				78644AAE263444D800C16C47 /* OFL.txt in Resources */,
 				786ACD822653E0E60034E2AA /* DetailCommentTableViewCell.xib in Resources */,
 				4F9DC73926253A4900609CF0 /* TestViewController.xib in Resources */,
+				393534EC2658FF5300C457EA /* CustomOptionAdditionalCell.xib in Resources */,
 				39D9D5A6264EBB8C000434B7 /* MenuListViewController.xib in Resources */,
 				7866F09A263024460037DB4C /* license.html in Resources */,
 				78FC10892658F1A1005776A4 /* BrandSelectCollectionViewCell.xib in Resources */,
@@ -1152,6 +1170,8 @@
 				4F2FD64826436F3B0085D629 /* DetailViewModel.swift in Sources */,
 				4F497E4A263B94A200571CEF /* UIView + FadeInOut.swift in Sources */,
 				39D9D599264EA7F6000434B7 /* MenuCategoryCollectionViewCell.swift in Sources */,
+				393534EB2658FF5300C457EA /* CustomOptionAdditionalCell.swift in Sources */,
+				393534E72658E3BF00C457EA /* MenuOptionModel.swift in Sources */,
 				39D9D5A5264EBB8C000434B7 /* MenuListViewController.swift in Sources */,
 				39A4492726443D70001DD3C4 /* BaseCustomView.swift in Sources */,
 				39D9D596264E682E000434B7 /* MenuCategoryBar.swift in Sources */,

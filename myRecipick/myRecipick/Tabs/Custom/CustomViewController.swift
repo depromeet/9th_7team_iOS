@@ -95,7 +95,8 @@ extension CustomViewController {
     
     private func bind() {
         disposeBag.insert(
-            viewModel.menuListObservable.bind(to: menuCollectionView.rx.items(cellIdentifier: MenuContainerCollectionViewCell.identifier, cellType: MenuContainerCollectionViewCell.self)) { index, element, cell in
+            viewModel.menuListObservable.bind(to: menuCollectionView.rx.items(cellIdentifier: MenuContainerCollectionViewCell.identifier, cellType: MenuContainerCollectionViewCell.self)) { [weak self] index, element, cell in
+                guard let self = self else { return }
                 let item = element.value as? [String]
                 cell.menuList(list: item, on: self)
             },
