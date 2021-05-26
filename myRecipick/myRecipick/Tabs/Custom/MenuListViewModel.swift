@@ -12,13 +12,13 @@ import RxCocoa
 
 class MenuListViewModel {
     
-    private let menuList = BehaviorRelay<[String]>(value: [])
+    private let menuList = BehaviorRelay<[MenuModel]>(value: [])
     
-    var menuListObservable: Observable<[String]> {
+    var menuListObservable: Observable<[MenuModel]> {
         return menuList.asObservable()
     }
     
-    init(menuList: [String]) {
+    init(menuList: [MenuModel]) {
         self.menuList.accept(menuList)
         
     }

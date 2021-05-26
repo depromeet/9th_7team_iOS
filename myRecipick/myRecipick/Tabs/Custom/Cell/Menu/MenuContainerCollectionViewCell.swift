@@ -17,7 +17,7 @@ class MenuContainerCollectionViewCell: UICollectionViewCell, ClassIdentifiable {
         super.awakeFromNib()
     }
     
-    func menuList(list: [String]?, on parent: UIViewController) {
+    func menuList(list: [MenuModel]?, on parent: UIViewController) {
         guard let list = list else { return }
         let menuVC = MenuListViewController.makeViewController(menuList: list, parentVC: parent)
         menuVC.view.frame = baseView.frame

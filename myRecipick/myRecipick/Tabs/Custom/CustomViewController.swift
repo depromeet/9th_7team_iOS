@@ -46,7 +46,7 @@ class CustomViewController: UIViewController, CoordinatorViewControllerProtocol,
         initCollectionView()
         bind()
         
-//        viewModel.fetchMenu(with: "3fa85f64-5717-4562-b3fc-2c963f66afa6")
+        viewModel.fetchMenu(with: "fe544b1d-a2be-44d5-ab93-026b43e04eb5")
     }
     
     // MARK: func
@@ -61,7 +61,7 @@ class CustomViewController: UIViewController, CoordinatorViewControllerProtocol,
     private func initCategoryView() {
         menuCategoryView.delegate = self
         viewModel.menuListObservable
-            .map { $0.keys.sorted() }
+            .map { $0.map { $0.name } }
             .bind(to: menuCategoryView.categories)
             .disposed(by: disposeBag)
         menuCategoryView.moveIndicator(in: 0) // 서버에서 값 받아오면 바꾸기
@@ -97,7 +97,7 @@ extension CustomViewController {
         disposeBag.insert(
             viewModel.menuListObservable.bind(to: menuCollectionView.rx.items(cellIdentifier: MenuContainerCollectionViewCell.identifier, cellType: MenuContainerCollectionViewCell.self)) { [weak self] index, element, cell in
                 guard let self = self else { return }
-                let item = element.value as? [String]
+                let item = element.menus
                 cell.menuList(list: item, on: self)
             },
             menuCollectionView.rx.setDelegate(self)

@@ -12,7 +12,7 @@ import RxCocoa
 
 class MenuListViewController: UIViewController, ClassIdentifiable {
     
-    static func makeViewController(menuList: [String], parentVC: UIViewController? = nil) -> MenuListViewController {
+    static func makeViewController(menuList: [MenuModel], parentVC: UIViewController? = nil) -> MenuListViewController {
         let vm = MenuListViewModel(menuList: menuList)
         let vc = MenuListViewController(nibName: MenuListViewController.identifier, bundle: nil)
         vc.parentVC = parentVC
@@ -49,10 +49,11 @@ extension MenuListViewController {
                     cell.bind(with: element)
                 },
             collectionView.rx.setDelegate(self),
-            collectionView.rx.modelSelected(String.self).bind(onNext: { [weak self] indexPath in
-                print(indexPath)
+            collectionView.rx.modelSelected(MenuModel.self)
+                .bind(onNext: { [weak self] item in
+                print(item)
                 guard let parentVC = self?.parentVC as? CustomViewController else { return }
-                let vc = CustomOptionViewController.makeViewController(menuID: "메뉴지롱")
+                    let vc = CustomOptionViewController.makeViewController(menuID: item.id)
                 parentVC.navigationController?.pushViewController(vc, animated: true)
                 
             })
