@@ -27,6 +27,7 @@ class CustomOptionSubTitleCell: UICollectionViewCell, ClassIdentifiable {
         super.prepareForReuse()
         titleLabel.text = nil
         imageView.image = nil
+        questionButton.isHidden = true
     }
     
     override func awakeFromNib() {
@@ -38,6 +39,7 @@ class CustomOptionSubTitleCell: UICollectionViewCell, ClassIdentifiable {
         titleLabel.text = nil
         titleLabel.textColor = Colors.grayScale66.color
         titleLabel.font = .myRecipickFont(.body2)
+        questionButton.isHidden = true
     }
     
     func bind(item: OptionModel) {
@@ -52,6 +54,11 @@ class CustomOptionSubTitleCell: UICollectionViewCell, ClassIdentifiable {
             imageView.highlightedImage = Images.editCheck.image
         default: break
         }
+        
+        if item.calorie != nil || item.description != nil {
+            questionButton.isHidden = false
+        }
+        
     }
     
     @IBAction func tapButton(_ sender: UIButton) {

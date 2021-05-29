@@ -8,11 +8,6 @@
 
 import Foundation
 
-struct MenuDataModel: Decodable {
-    let status: Int
-    let data: [MenuCategoryModel]
-}
-
 struct MenuCategoryModel: Decodable {
     let id: String
     let name: String

@@ -25,7 +25,7 @@ class CustomViewModel {
         httpRequest.url = "brands/\(brandID)/menus"
 
         ServerUtil.shared.rx.requestRx(with: httpRequest)
-            .subscribe(onNext: { [weak self ] (data: MenuDataModel) in
+            .subscribe(onNext: { [weak self ] (data: MenuResponseModel<[MenuCategoryModel]>) in
                 self?.menuList.accept(data.data)
             }) { error in
                 print("error -> \(error)")

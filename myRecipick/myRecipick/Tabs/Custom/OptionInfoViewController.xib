@@ -29,49 +29,53 @@
                     <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8u7-oG-ugr">
-                            <rect key="frame" x="24" y="597" width="366" height="191"/>
+                            <rect key="frame" x="24" y="602" width="366" height="186"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="토마토" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="27c-dx-MWL">
-                                    <rect key="frame" x="16" y="60" width="334" height="21"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <nil key="textColor"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="토마토는 다이어트 식품일까 근데 원푸드 다이어트는 굉장히 위험하니까 조심하자" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="chD-ua-W3V">
-                                    <rect key="frame" x="16" y="85" width="334" height="41"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <nil key="textColor"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="맛있으면 0kcal" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CfM-xo-ZTM">
-                                    <rect key="frame" x="16" y="146" width="334" height="21"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <nil key="textColor"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
+                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="iYN-WJ-nRF">
+                                    <rect key="frame" x="16" y="60" width="334" height="106"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="TVY-6s-axz">
+                                            <rect key="frame" x="0.0" y="0.0" width="334" height="65.5"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="토마토" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="27c-dx-MWL">
+                                                    <rect key="frame" x="0.0" y="0.0" width="334" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="토마토는 다이어트 식품일까 근데 원푸드 다이어트는 굉장히 위험하니까 조심하자" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="chD-ua-W3V">
+                                                    <rect key="frame" x="0.0" y="24.5" width="334" height="41"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </stackView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="맛있으면 0kcal" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CfM-xo-ZTM">
+                                            <rect key="frame" x="0.0" y="85.5" width="334" height="20.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </stackView>
                             </subviews>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <constraints>
-                                <constraint firstAttribute="trailing" secondItem="chD-ua-W3V" secondAttribute="trailing" constant="16" id="L3x-PD-h7d"/>
-                                <constraint firstAttribute="trailing" secondItem="27c-dx-MWL" secondAttribute="trailing" constant="16" id="NyN-HT-jDi"/>
-                                <constraint firstItem="27c-dx-MWL" firstAttribute="top" secondItem="8u7-oG-ugr" secondAttribute="top" constant="60" id="Pq2-6o-EY0"/>
-                                <constraint firstItem="CfM-xo-ZTM" firstAttribute="leading" secondItem="8u7-oG-ugr" secondAttribute="leading" constant="16" id="VtD-EW-pCw"/>
-                                <constraint firstItem="chD-ua-W3V" firstAttribute="top" secondItem="27c-dx-MWL" secondAttribute="bottom" constant="4" id="Xc7-9k-6Pe"/>
-                                <constraint firstItem="CfM-xo-ZTM" firstAttribute="top" secondItem="chD-ua-W3V" secondAttribute="bottom" constant="20" id="YoN-ZM-A3m"/>
-                                <constraint firstItem="chD-ua-W3V" firstAttribute="leading" secondItem="8u7-oG-ugr" secondAttribute="leading" constant="16" id="e7k-cZ-ibA"/>
-                                <constraint firstAttribute="trailing" secondItem="CfM-xo-ZTM" secondAttribute="trailing" constant="16" id="kC9-ti-98p"/>
-                                <constraint firstAttribute="bottom" secondItem="CfM-xo-ZTM" secondAttribute="bottom" constant="24" id="pR4-GJ-8er"/>
-                                <constraint firstItem="27c-dx-MWL" firstAttribute="leading" secondItem="8u7-oG-ugr" secondAttribute="leading" constant="16" id="z7a-Up-rQO"/>
+                                <constraint firstAttribute="bottom" secondItem="iYN-WJ-nRF" secondAttribute="bottom" constant="20" id="38y-k7-F6e"/>
+                                <constraint firstItem="iYN-WJ-nRF" firstAttribute="top" secondItem="8u7-oG-ugr" secondAttribute="top" constant="60" id="8ls-Nn-fym"/>
+                                <constraint firstItem="iYN-WJ-nRF" firstAttribute="leading" secondItem="8u7-oG-ugr" secondAttribute="leading" constant="16" id="W9R-Bi-9rK"/>
+                                <constraint firstAttribute="trailing" secondItem="iYN-WJ-nRF" secondAttribute="trailing" constant="16" id="m8t-kf-ehX"/>
                             </constraints>
                         </view>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sample" translatesAutoresizingMaskIntoConstraints="NO" id="0IB-i5-W71">
-                            <rect key="frame" x="103.5" y="499" width="207" height="138"/>
+                            <rect key="frame" x="103.5" y="504" width="207" height="138"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="0IB-i5-W71" secondAttribute="height" multiplier="3:2" id="RMb-fV-tMs"/>
                             </constraints>
                         </imageView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lij-hV-bi0">
-                            <rect key="frame" x="350.5" y="555" width="30" height="30"/>
+                            <rect key="frame" x="350.5" y="560" width="30" height="30"/>
                             <state key="normal" image="evaCloseFill"/>
                             <connections>
                                 <action selector="closeButton:" destination="-1" eventType="touchUpInside" id="BKh-Jz-075"/>

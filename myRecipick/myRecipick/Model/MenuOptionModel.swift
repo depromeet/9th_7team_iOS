@@ -9,9 +9,9 @@
 import Foundation
 import RxCocoa
 
-struct MenuOptionDataModel: Decodable {
+struct MenuResponseModel<T: Decodable>: Decodable {
     let status: Int
-    let data: [OptionKindModel]
+    let data: T
 }
 
 struct OptionKindModel: Decodable {
@@ -29,6 +29,8 @@ struct OptionKindModel: Decodable {
 struct OptionModel: Decodable {
     let type: OptionType
     let name: String
+    let description: String?
+    let calorie: String?
     let image: String
     let order: Int
 }

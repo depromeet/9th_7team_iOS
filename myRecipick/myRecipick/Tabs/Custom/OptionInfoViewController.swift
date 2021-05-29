@@ -32,6 +32,7 @@ class OptionInfoViewController: UIViewController, ClassIdentifiable {
 
         initBackgroundView()
         initLabel()
+        bindData()
     }
     
     private func initBackgroundView() {
@@ -41,14 +42,32 @@ class OptionInfoViewController: UIViewController, ClassIdentifiable {
     }
     
     private func initLabel() {
+        nameLabel.text = nil
         nameLabel.textColor = Colors.grayScale33.color
         nameLabel.font = .myRecipickFont(.title4)
         
+        infoLabel.text = nil
         infoLabel.textColor = Colors.grayScale66.color
         infoLabel.font = .myRecipickFont(.body2)
         
+        kcalLabel.text = nil
         kcalLabel.textColor = Colors.grayScale99.color
         kcalLabel.font = .myRecipickFont(.caption)
+        
+    }
+    
+    private func bindData() {
+        guard let item = optionItem else { return }
+        nameLabel.text = item.name
+        infoLabel.text = item.description
+        kcalLabel.text = item.calorie
+        
+        imageView.kf.setImage(with: URL(string: item.image),
+                                   placeholder: nil,
+                                   options: [.cacheMemoryOnly],
+                                   completionHandler: { [weak self] _ in
+                                    self?.imageView.fadeIn(duration: 0.1, completeHandler: nil)
+                                   })
     }
 
     @IBAction func closeButton(_ sender: Any) {

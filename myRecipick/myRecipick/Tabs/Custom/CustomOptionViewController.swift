@@ -94,7 +94,8 @@ class CustomOptionViewController: UIViewController, ClassIdentifiable {
         doneButton.setTitle("커스텀 완료", for: .normal)
         doneButton.setTitleColor(Colors.white.color, for: .normal)
         doneButton.setBackgroundColor(Colors.primaryNormal.color, for: .normal)
-        doneButton.setBackgroundColor(Colors.primaryLight.color, for: .highlighted)
+        doneButton.setBackgroundColor(Colors.grayScaleBD.color, for: .disabled)
+        doneButton.setBackgroundColor(Colors.primaryLight.color, for: .selected)
         doneButton.roundCorner(radius: 4)
         doneButton.addTarget(self, action: #selector(saveCustomMenu(_:)), for: .touchUpInside)
     }
@@ -165,6 +166,12 @@ extension CustomOptionViewController {
     
     @objc func saveCustomMenu(_ sender: UIButton) {
         viewModel.saveCustomOption()
+        makeCustomMenuName()
+    }
+    
+    private func makeCustomMenuName() {
+        let vc = CustomMenuNameViewController.makeViewController(menu: viewModel.menu)
+        present(vc, animated: false, completion: nil)
     }
 }
 

@@ -30,16 +30,12 @@ class CustomOptionViewModel {
         httpRequest.url = "menus/\(menuItem.id)/options"
         
         ServerUtil.shared.rx.requestRx(with: httpRequest)
-            .map({ (data: MenuOptionDataModel) -> [OptionSection] in
-                var sectionList: [OptionSection] = []
-                data.data.forEach {
-                    var itemList: [OptionItem] = []
-                    $0.options.forEach {
-                        let optionItem = OptionItem(item: $0)
-                        itemList.append(optionItem)
+            .map({ (data: MenuResponseModel<[OptionKindModel]>) -> [OptionSection] in
+                let sectionList = data.data.map { data -> OptionSection in
+                    let optionList = data.options.map {
+                        return OptionItem(item: $0)
                     }
-                    let sectionData = OptionSection(option: $0, isSingleSelection: $0.type == "SINGLE", items: itemList)
-                    sectionList.append(sectionData)
+                    return OptionSection(option: data, isSingleSelection: data.type == "SINGLE", items: optionList)
                 }
                 return sectionList
             })
@@ -72,9 +68,12 @@ class CustomOptionViewModel {
         let item = optionList.value
             .map { option -> CustomOptionGroupModel in
             let selectedItem = option.items
-                .filter { $0.isSelected }
-                .map { item -> CustomOptionModel in
-                    return CustomOptionModel(image: item.item.image, name: item.item.name)
+                .compactMap { item -> CustomOptionModel? in
+                    if item.isSelected {
+                        return CustomOptionModel(image: item.item.image, name: item.item.name)
+                    } else {
+                        return nil
+                    }
                 }
             return CustomOptionGroupModel(id: option.option.id, name: option.option.name, options: selectedItem)
             
