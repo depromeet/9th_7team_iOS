@@ -20,6 +20,8 @@
 		397286DE26614E9D00D07056 /* OptionInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 397286DC26614E9D00D07056 /* OptionInfoViewController.swift */; };
 		397286DF26614E9D00D07056 /* OptionInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 397286DD26614E9D00D07056 /* OptionInfoViewController.xib */; };
 		397286E126616C5300D07056 /* Encodable + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 397286E026616C5300D07056 /* Encodable + Extensions.swift */; };
+		397286E426625C2E00D07056 /* CustomMenuNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 397286E226625C2E00D07056 /* CustomMenuNameViewController.swift */; };
+		397286E526625C2E00D07056 /* CustomMenuNameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 397286E326625C2E00D07056 /* CustomMenuNameViewController.xib */; };
 		39A4492126426D90001DD3C4 /* ActivityIndicatorable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A4492026426D90001DD3C4 /* ActivityIndicatorable.swift */; };
 		39A4492526443907001DD3C4 /* CustomViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 39A4492426443907001DD3C4 /* CustomViewController.xib */; };
 		39A4492726443D70001DD3C4 /* BaseCustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A4492626443D70001DD3C4 /* BaseCustomView.swift */; };
@@ -195,6 +197,8 @@
 		397286DC26614E9D00D07056 /* OptionInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionInfoViewController.swift; sourceTree = "<group>"; };
 		397286DD26614E9D00D07056 /* OptionInfoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OptionInfoViewController.xib; sourceTree = "<group>"; };
 		397286E026616C5300D07056 /* Encodable + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encodable + Extensions.swift"; sourceTree = "<group>"; };
+		397286E226625C2E00D07056 /* CustomMenuNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMenuNameViewController.swift; sourceTree = "<group>"; };
+		397286E326625C2E00D07056 /* CustomMenuNameViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomMenuNameViewController.xib; sourceTree = "<group>"; };
 		39A4492026426D90001DD3C4 /* ActivityIndicatorable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorable.swift; sourceTree = "<group>"; };
 		39A4492426443907001DD3C4 /* CustomViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomViewController.xib; sourceTree = "<group>"; };
 		39A4492626443D70001DD3C4 /* BaseCustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCustomView.swift; sourceTree = "<group>"; };
@@ -545,6 +549,8 @@
 				393534E2265547F800C457EA /* CustomOptionViewModel.swift */,
 				393534DE2655479A00C457EA /* CustomOptionViewController.swift */,
 				393534DF2655479A00C457EA /* CustomOptionViewController.xib */,
+				397286E226625C2E00D07056 /* CustomMenuNameViewController.swift */,
+				397286E326625C2E00D07056 /* CustomMenuNameViewController.xib */,
 			);
 			path = Custom;
 			sourceTree = "<group>";
@@ -974,6 +980,7 @@
 				78C8C19F2615C81A00F84CAB /* InfoPlist.strings in Resources */,
 				397286DF26614E9D00D07056 /* OptionInfoViewController.xib in Resources */,
 				78644AAE263444D800C16C47 /* OFL.txt in Resources */,
+				397286E526625C2E00D07056 /* CustomMenuNameViewController.xib in Resources */,
 				786ACD822653E0E60034E2AA /* DetailCommentTableViewCell.xib in Resources */,
 				4F9DC73926253A4900609CF0 /* TestViewController.xib in Resources */,
 				393534EC2658FF5300C457EA /* CustomOptionAdditionalCell.xib in Resources */,
@@ -1228,6 +1235,7 @@
 				78403AE02668FF9500483C0F /* BrandSelectViewModel.swift in Sources */,
 				4F2FD64F2643852A0085D629 /* IngredientsView.swift in Sources */,
 				786ACD722653DCE40034E2AA /* UIView + CornerRadius.swift in Sources */,
+				397286E426625C2E00D07056 /* CustomMenuNameViewController.swift in Sources */,
 				7815C5C126510D2000581D4E /* DetailTableViewCell.swift in Sources */,
 				7866F0AA263025F20037DB4C /* CommonWebViewController.swift in Sources */,
 				789FD51F26270419003728A6 /* UIView + Snapshot.swift in Sources */,

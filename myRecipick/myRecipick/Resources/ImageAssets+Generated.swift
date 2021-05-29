@@ -36,6 +36,7 @@ internal enum Images {
   internal static let iconsNavigation32History = ImageAsset(name: "iconsNavigation32History")
   internal static let iconsNavigation32Home = ImageAsset(name: "iconsNavigation32Home")
   internal static let iconsNavigation32Plus = ImageAsset(name: "iconsNavigation32Plus")
+  internal static let imageRectangle = ImageAsset(name: "imageRectangle")
   internal static let sample = ImageAsset(name: "sample")
   internal static let tip11 = ImageAsset(name: "tip11")
   internal static let tip21 = ImageAsset(name: "tip21")
