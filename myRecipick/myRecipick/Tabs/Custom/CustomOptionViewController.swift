@@ -165,12 +165,16 @@ extension CustomOptionViewController {
     }
     
     @objc func saveCustomMenu(_ sender: UIButton) {
-        viewModel.saveCustomOption()
         makeCustomMenuName()
     }
     
     private func makeCustomMenuName() {
         let vc = CustomMenuNameViewController.makeViewController(menu: viewModel.menu)
+        vc.buttonClosure = { [weak self] name in
+            DispatchQueue.main.async {
+                self?.viewModel.saveCustomOption(with: name)
+            }
+        }
         present(vc, animated: false, completion: nil)
     }
 }

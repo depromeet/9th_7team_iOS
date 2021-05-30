@@ -28,8 +28,10 @@ class CustomMenuNameViewController: UIViewController, ClassIdentifiable {
     
     private var menu: MenuModel?
     
-    var disposeBag = DisposeBag()
+    var buttonClosure: ((String) -> Void)?
+    let menuName = BehaviorRelay<String>(value: "")
     
+    var disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -105,6 +107,18 @@ class CustomMenuNameViewController: UIViewController, ClassIdentifiable {
             .compactMap { $0.count > 0 }
             .bind(to: okButton.rx.isEnabled)
             .disposed(by: disposeBag)
+        
+        nameTextField.rx.text
+            .orEmpty
+            .bind(to: menuName)
+            .disposed(by: disposeBag)
+        
+        okButton.rx.tap
+            .subscribe(onNext: { [weak self] in
+                guard let self = self else { return }
+                self.buttonClosure?(self.menuName.value)
+                self.doClose(sender: nil)
+            }).disposed(by: disposeBag)
     }
 }
 

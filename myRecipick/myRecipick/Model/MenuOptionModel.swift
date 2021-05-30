@@ -111,6 +111,12 @@ enum Options: Hashable {
     case additional
 }
 
+struct CustomModel: Encodable {
+    let name: String
+    let menu: CustomMenuModel
+    let optionGroups: [CustomOptionGroupModel]
+}
+
 struct CustomMenuModel: Encodable {
     let id: String
     let name: String
@@ -126,4 +132,10 @@ struct CustomOptionGroupModel: Encodable {
 struct CustomOptionModel: Encodable {
     let image: String
     let name: String
+}
+
+struct MadeOptionModel: Decodable {
+    let id: String
+    let createdDate: String
+    let updatedDate: String
 }

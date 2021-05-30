@@ -9,12 +9,11 @@
 import Foundation
 
 extension Encodable {
-    var toJSONString: String {
-        let jsonData = try? JSONEncoder().encode(self)
-        if let jsonData = jsonData,
-           let jsonString = String(data: jsonData, encoding: .utf8) {
-            return jsonString
-        }
-        return ""
+    subscript(key: String) -> Any? {
+        return dictionary
+    }
+    
+    var dictionary: [String: Any] {
+        return (try? JSONSerialization.jsonObject(with: JSONEncoder().encode(self))) as? [String: Any] ?? [:]
     }
 }

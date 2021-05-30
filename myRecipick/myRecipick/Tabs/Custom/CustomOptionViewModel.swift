@@ -43,25 +43,28 @@ class CustomOptionViewModel {
             .disposed(by: disposeBag)
     }
     
-    func saveCustomOption() {
+    func saveCustomOption(with name: String) {
         var httpRequest = HttpRequest()
         httpRequest.url = "my/custom-menus"
         httpRequest.method = .post
         httpRequest.headers = .customMenus(uniqueId: UniqueUUIDManager.shared.uniqueUUID)
-        httpRequest.parameters = [
-            "name": "테스트용",
-            "menu": CustomMenuModel(id: menu?.id ?? "", name: menu?.name ?? "", image: menu?.image ?? "").toJSONString,
-            "optionGroups": customMenuList().toJSONString
-        ]
-        
+        httpRequest.parameters = setCustomModel(with: name)?.dictionary
+
         ServerUtil.shared.rx.requestRx(with: httpRequest)
-            .subscribe(onNext: { (data: String) in
+            .subscribe(onNext: { (data: MenuResponseModel<MadeOptionModel>) in
                 print(data)
             }, onError: { error in
                 print(error)
             })
             .disposed(by: disposeBag)
       
+    }
+    
+    private func setCustomModel(with name: String) -> CustomModel? {
+        guard let menu = self.menu else { return nil }
+        return CustomModel(name: name,
+                           menu: CustomMenuModel(id: menu.id, name: menu.name, image: menu.image),
+                           optionGroups: customMenuList())
     }
 
     private func customMenuList() -> [CustomOptionGroupModel] {
