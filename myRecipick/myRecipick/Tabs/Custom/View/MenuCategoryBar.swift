@@ -80,17 +80,17 @@ extension MenuCategoryBar {
         disposeBag.insert(
             categories.asObservable()
                 .bind(to: tabbarCollectionView.rx.items(cellIdentifier: MenuCategoryCollectionViewCell.identifier, cellType: MenuCategoryCollectionViewCell.self)) { index, element, cell in
-                    if index == 0 { cell.isSelected = true }
                     cell.bind(element)
                 },
             tabbarCollectionView.rx.setDelegate(self),
-            tabbarCollectionView.rx.itemSelected.bind(onNext: { [weak self] indexPath in
+            tabbarCollectionView.rx.itemSelected
+                .bind(onNext: { [weak self] indexPath in
                 guard let self = self else { return }
                 self.moveIndicator(in: indexPath.item)
                 self.delegate?.tapTabbar(scrollTo: indexPath.item)
             }),
-            
-            tabbarCollectionView.rx.itemDeselected.bind(onNext: { [weak self] indexPath in
+            tabbarCollectionView.rx.itemDeselected
+                .bind(onNext: { [weak self] indexPath in
                 guard let cell = self?.tabbarCollectionView.cellForItem(at: indexPath) as? MenuCategoryCollectionViewCell else { return }
                 cell.titleLabel.textColor = Colors.grayScale66.color
             })

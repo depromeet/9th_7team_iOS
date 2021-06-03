@@ -49,6 +49,11 @@ class CustomViewController: UIViewController, CoordinatorViewControllerProtocol,
         viewModel.fetchMenu(with: "fe544b1d-a2be-44d5-ab93-026b43e04eb5")
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        menuCategoryView.moveIndicator(in: 0)
+    }
+    
     // MARK: func
     
     private func initNavigationView() {
@@ -64,7 +69,6 @@ class CustomViewController: UIViewController, CoordinatorViewControllerProtocol,
             .map { $0.map { $0.name } }
             .bind(to: menuCategoryView.categories)
             .disposed(by: disposeBag)
-        menuCategoryView.moveIndicator(in: 0) // 서버에서 값 받아오면 바꾸기
     }
     
     private func initCollectionView() {

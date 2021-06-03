@@ -37,7 +37,7 @@
                     </constraints>
                 </view>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="ppr-FK-o6g">
-                    <rect key="frame" x="0.0" y="146" width="414" height="716"/>
+                    <rect key="frame" x="0.0" y="146" width="414" height="750"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Mbv-EL-Msk">
                         <size key="itemSize" width="128" height="128"/>
@@ -58,7 +58,7 @@
                 <constraint firstItem="ppr-FK-o6g" firstAttribute="top" secondItem="Je4-aI-dXg" secondAttribute="bottom" id="n8Y-H3-pSn"/>
                 <constraint firstItem="Je4-aI-dXg" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="nBz-hK-gGQ"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="HqD-De-RPl" secondAttribute="trailing" id="nVC-Qy-khI"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="ppr-FK-o6g" secondAttribute="bottom" id="pU0-Us-d9r"/>
+                <constraint firstAttribute="bottom" secondItem="ppr-FK-o6g" secondAttribute="bottom" id="pU0-Us-d9r"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Je4-aI-dXg" secondAttribute="trailing" id="z0e-1j-xTy"/>
             </constraints>
             <point key="canvasLocation" x="132" y="82"/>
