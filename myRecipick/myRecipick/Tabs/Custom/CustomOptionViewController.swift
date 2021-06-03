@@ -33,7 +33,10 @@ class CustomOptionViewController: UIViewController, ClassIdentifiable {
     lazy var dataSource = OptionDatasource(collectionView: collectionView) { [weak self] list in
         self?.updateSnapshot(list: list)
     } cellSelectClosure: { [weak self] item in
-        self?.showInfo(item: item)
+        guard let self = self else { return }
+        self.viewModel.selectAction().disposed(by: self.disposeBag)
+        self.viewModel.resetEnableCheck().disposed(by: self.disposeBag)
+        self.showInfo(item: item)
     }
     
     private var viewModel: CustomOptionViewModel!
@@ -67,17 +70,33 @@ class CustomOptionViewController: UIViewController, ClassIdentifiable {
     
     private func initTableTopView() {
         tableTopView.backgroundColor = Colors.grayScaleEE.color
-        optionImageView.kf.setImage(with: URL(string: viewModel.menu?.image ?? ""),
-                                   placeholder: nil,
-                                   options: [.cacheMemoryOnly],
-                                   completionHandler: { [weak self] _ in
-                                    self?.optionImageView.fadeIn(duration: 0.1, completeHandler: nil)
-                                   })
+        setMenuImage()
         resetView.roundCorners(corners: [.topLeft, .topRight], radius: 25)
         resetButton.setTitle("초기화", for: .normal)
         resetButton.setTitleColor(Colors.grayScale66.color, for: .normal)
+        resetButton.setTitleColor(Colors.grayScaleEE.color, for: .disabled)
         resetButton.titleLabel?.font = .myRecipickFont(.button)
-        resetButton.addTarget(self, action: #selector(resetAll(_:)), for: .touchUpInside)
+        
+        viewModel.resetEnableObservable
+            .bind(to: resetButton.rx.isEnabled)
+            .disposed(by: disposeBag)
+
+        resetButton.rx.tap
+            .subscribe(onNext: { [weak self] in
+                guard let self = self else { return }
+                self.viewModel.fetchOption()
+                self.setMenuImage()
+            }).disposed(by: disposeBag)
+        
+    }
+    
+    private func setMenuImage() {
+        optionImageView.kf.setImage(with: URL(string: viewModel.menu?.image ?? ""),
+                                    placeholder: nil,
+                                    options: [.cacheMemoryOnly],
+                                    completionHandler: { [weak self] _ in
+                                        self?.optionImageView.fadeIn(duration: 0.1, completeHandler: nil)
+                                    })
     }
     
     private func initCollectionView() {
@@ -97,7 +116,25 @@ class CustomOptionViewController: UIViewController, ClassIdentifiable {
         doneButton.setBackgroundColor(Colors.grayScaleBD.color, for: .disabled)
         doneButton.setBackgroundColor(Colors.primaryLight.color, for: .selected)
         doneButton.roundCorner(radius: 4)
-        doneButton.addTarget(self, action: #selector(saveCustomMenu(_:)), for: .touchUpInside)
+        
+        viewModel.saveEnableObservable
+            .bind(to: doneButton.rx.isEnabled)
+            .disposed(by: disposeBag)
+        
+        doneButton.rx.tap
+            .subscribe(onNext: { [weak self] in
+                self?.makeCustomMenuName()
+            }).disposed(by: disposeBag)
+    }
+    
+    private func makeCustomMenuName() {
+        let vc = CustomMenuNameViewController.makeViewController(menu: viewModel.menu)
+        vc.buttonClosure = { [weak self] name in
+            DispatchQueue.main.async {
+                self?.viewModel.saveCustomOption(with: name)
+            }
+        }
+        present(vc, animated: false, completion: nil)
     }
     
     private func createCollectionViewLayout() -> UICollectionViewCompositionalLayout {
@@ -157,25 +194,6 @@ extension CustomOptionViewController {
     @objc
     private func popToRootView(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
-    }
-    
-    @objc
-    private func resetAll(_ sender: UIButton) {
-        print("reset")
-    }
-    
-    @objc func saveCustomMenu(_ sender: UIButton) {
-        makeCustomMenuName()
-    }
-    
-    private func makeCustomMenuName() {
-        let vc = CustomMenuNameViewController.makeViewController(menu: viewModel.menu)
-        vc.buttonClosure = { [weak self] name in
-            DispatchQueue.main.async {
-                self?.viewModel.saveCustomOption(with: name)
-            }
-        }
-        present(vc, animated: false, completion: nil)
     }
 }
 

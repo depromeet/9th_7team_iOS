@@ -18,12 +18,54 @@ class CustomOptionViewModel {
         return optionList.asObservable()
     }
     
+    private let saveEnable = BehaviorRelay<Bool>(value: false)
+    var saveEnableObservable: Observable<Bool> {
+        saveEnable.asObservable()
+    }
+    
+    let resetEnable = BehaviorRelay<Bool>(value: false)
+    var resetEnableObservable: Observable<Bool> {
+        resetEnable.asObservable()
+    }
+    
     var disposeBag = DisposeBag()
     
     init(menu: MenuModel) {
         self.menu = menu
     }
     
+    func selectAction() -> Disposable {
+        return Single.just(optionList.value)
+            .map {
+                $0.map { item -> Bool in
+                    let selected = item.items.filter { $0.isSelected }
+                    let policy = item.option.policy
+                    if policy.max != 0 {
+                        return (policy.max >= selected.count)
+                            && (policy.min <= selected.count)
+                    } else {
+                        return true
+                    }
+                }
+                .allSatisfy { $0 }
+            }.subscribe(onSuccess: { isOn in
+                self.saveEnable.accept(isOn)
+            })
+    }
+    
+    func resetEnableCheck() -> Disposable {
+        return Single.just(optionList.value)
+            .map {
+                $0.map { item -> Bool in
+                    let selected = item.items.filter { $0.isSelected }
+                    return selected.isEmpty
+                }
+                .contains(true)
+            }.subscribe(onSuccess: { isOn in
+                self.resetEnable.accept(isOn)
+            })
+    }
+
     func fetchOption() {
         guard let menuItem = menu else { return }
         var httpRequest = HttpRequest()

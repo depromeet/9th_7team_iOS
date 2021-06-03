@@ -52,7 +52,9 @@ class CustomOptionSubTitleCell: UICollectionViewCell, ClassIdentifiable {
         case .radio:
             imageView.image = Images.editNonCheck.image
             imageView.highlightedImage = Images.editCheck.image
-        default: break
+        default:
+            imageView.image = nil
+            imageView.highlightedImage = nil
         }
         
         if item.calorie != nil || item.description != nil {
