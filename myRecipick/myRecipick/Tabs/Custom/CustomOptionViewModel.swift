@@ -28,6 +28,8 @@ class CustomOptionViewModel {
         resetEnable.asObservable()
     }
     
+    let isLoading = BehaviorRelay<Bool>(value: false)
+    
     var disposeBag = DisposeBag()
     
     init(menu: MenuModel) {
@@ -68,10 +70,14 @@ class CustomOptionViewModel {
 
     func fetchOption() {
         guard let menuItem = menu else { return }
+        isLoading.accept(true)
         var httpRequest = HttpRequest()
         httpRequest.url = "menus/\(menuItem.id)/options"
         
         ServerUtil.shared.rx.requestRx(with: httpRequest)
+            .do(onCompleted: { [weak self] in
+                self?.isLoading.accept(false)
+            })
             .map({ (data: MenuResponseModel<[OptionKindModel]>) -> [OptionSection] in
                 let sectionList = data.data.map { data -> OptionSection in
                     let optionList = data.options.map {
@@ -86,6 +92,7 @@ class CustomOptionViewModel {
     }
     
     func saveCustomOption(with name: String) {
+        isLoading.accept(true)
         var httpRequest = HttpRequest()
         httpRequest.url = "my/custom-menus"
         httpRequest.method = .post
@@ -95,6 +102,7 @@ class CustomOptionViewModel {
         ServerUtil.shared.rx.requestRx(with: httpRequest)
             .subscribe(onNext: { (data: MenuResponseModel<MadeOptionModel>) in
                 print(data)
+                self?.isLoading.accept(false)
             }, onError: { error in
                 print(error)
             })

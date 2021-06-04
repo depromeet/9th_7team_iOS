@@ -11,7 +11,7 @@ import Kingfisher
 import RxSwift
 import RxCocoa
 
-class CustomOptionViewController: UIViewController, ClassIdentifiable {
+class CustomOptionViewController: UIViewController, ClassIdentifiable, ActivityIndicatorable {
 
     static func makeViewController(menu: MenuModel) -> CustomOptionViewController {
         let vm = CustomOptionViewModel(menu: menu)
@@ -56,6 +56,15 @@ class CustomOptionViewController: UIViewController, ClassIdentifiable {
         viewModel.optionListObservable
             .bind(onNext: { [weak self] data in
                 self?.updateSnapshot(list: data)
+            }).disposed(by: disposeBag)
+        
+        viewModel.isLoading
+            .subscribe(onNext: { [weak self] isLoading in
+                if isLoading {
+                    self?.startIndicatorAnimating()
+                } else {
+                    self?.stopIndicatorAnimating()
+                }
             }).disposed(by: disposeBag)
     }
     
