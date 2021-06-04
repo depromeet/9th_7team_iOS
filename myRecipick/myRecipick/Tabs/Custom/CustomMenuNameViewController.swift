@@ -116,8 +116,7 @@ class CustomMenuNameViewController: UIViewController, ClassIdentifiable {
         okButton.rx.tap
             .subscribe(onNext: { [weak self] in
                 guard let self = self else { return }
-                self.buttonClosure?(self.menuName.value)
-                self.doClose(sender: nil)
+                self.doSave()
             }).disposed(by: disposeBag)
     }
 }
@@ -132,6 +131,20 @@ extension CustomMenuNameViewController {
             self.dimView.alpha = 0.0
         } completion: { (_ ) in
             self.dismiss(animated: false, completion: nil)
+        }
+    }
+    
+    @objc
+    private func doSave() {
+        view.endEditing(true)
+
+        UIView.animate(withDuration: 0.25) {
+            self.popupView.alpha = 0.0
+            self.dimView.alpha = 0.0
+        } completion: { (_ ) in
+            self.dismiss(animated: false) {
+                self.buttonClosure?(self.menuName.value)
+            }
         }
     }
 }

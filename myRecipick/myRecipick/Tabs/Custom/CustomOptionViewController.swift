@@ -140,10 +140,19 @@ class CustomOptionViewController: UIViewController, ClassIdentifiable, ActivityI
         let vc = CustomMenuNameViewController.makeViewController(menu: viewModel.menu)
         vc.buttonClosure = { [weak self] name in
             DispatchQueue.main.async {
-                self?.viewModel.saveCustomOption(with: name)
+                self?.viewModel.saveCustomOption(with: name) { [weak self] option in
+                    self?.showDetailVC(with: option)
+                }
             }
         }
         present(vc, animated: false, completion: nil)
+    }
+    
+    private func showDetailVC(with data: DetailService.DetailServiceInfoModel?) {
+        guard let data = data,
+              let navigationController = navigationController else { return }
+        let vc = DetailViewController.makeViewController(coordinator: DetailViewCoordinator(navigationController: navigationController), viewModel: DetailViewModel(service: DetailService(data: data)))
+        navigationController.pushViewController(vc, animated: true)
     }
     
     private func createCollectionViewLayout() -> UICollectionViewCompositionalLayout {

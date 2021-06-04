@@ -91,7 +91,7 @@ class CustomOptionViewModel {
             .disposed(by: disposeBag)
     }
     
-    func saveCustomOption(with name: String) {
+    func saveCustomOption(with name: String, completion: @escaping (DetailService.DetailServiceInfoModel?) -> Void) {
         isLoading.accept(true)
         var httpRequest = HttpRequest()
         httpRequest.url = "my/custom-menus"
@@ -100,14 +100,36 @@ class CustomOptionViewModel {
         httpRequest.parameters = setCustomModel(with: name)?.dictionary
 
         ServerUtil.shared.rx.requestRx(with: httpRequest)
-            .subscribe(onNext: { (data: MenuResponseModel<MadeOptionModel>) in
-                print(data)
+            .subscribe(onNext: { [weak self] (data: MenuResponseModel<MadeOptionModel>) in
                 self?.isLoading.accept(false)
+                let item = self?.mapData(with: data.data, menuName: name)
+                completion(item)
             }, onError: { error in
                 print(error)
             })
             .disposed(by: disposeBag)
       
+    }
+    
+    private func mapData(with data: MadeOptionModel, menuName: String) -> DetailService.DetailServiceInfoModel? {
+        guard let menu = menu else { return nil }
+        let value = optionList.value.map { list -> CustomMenuDetailOptionGroupObjModel in
+            let item = list.items.map { item -> CustomMenuDetailOptionGroupOptionsObjModel in
+                return CustomMenuDetailOptionGroupOptionsObjModel(name: item.item.name, imageUrl: item.item.image, category: nil)
+            }
+            return CustomMenuDetailOptionGroupObjModel(id: list.option.id, name: list.option.name, imageUrl: list.option.image, options: item)
+        }
+        return DetailService.DetailServiceInfoModel(customMenuDetailObjModel: CustomMenuDetailObjModel(id: data.id,
+                                                                                                       userId: UniqueUUIDManager.shared.uniqueUUID,
+                                                                                                       name: menuName,
+                                                                                                       optionGroups: value,
+                                                                                                       createdDate: data.createdDate,
+                                                                                                       updatedDate: data.updatedDate),
+                                                    customMenuObjModel: CustomMenuObjModel(id: menu.id,
+                                                                                           name: menu.name,
+                                                                                           description: "",
+                                                                                           imageUrl: menu.image,
+                                                                                           createdDate: menu.createdDate))
     }
     
     private func setCustomModel(with name: String) -> CustomModel? {
