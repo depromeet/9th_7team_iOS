@@ -8,6 +8,9 @@ PODS:
     - FirebaseAnalytics (~> 8.1.0)
   - Firebase/CoreOnly (8.1.0):
     - FirebaseCore (= 8.1.0)
+  - Firebase/Crashlytics (8.1.0):
+    - Firebase/CoreOnly
+    - FirebaseCrashlytics (~> 8.1.0)
   - FirebaseAnalytics (8.1.0):
     - FirebaseAnalytics/AdIdSupport (= 8.1.0)
     - FirebaseCore (~> 8.0)
@@ -44,6 +47,12 @@ PODS:
     - GoogleUtilities/Environment (~> 7.4)
     - GoogleUtilities/Logger (~> 7.4)
     - nanopb (~> 2.30908.0)
+  - FirebaseCrashlytics (8.1.0):
+    - FirebaseCore (~> 8.0)
+    - FirebaseInstallations (~> 8.0)
+    - GoogleDataTransport (~> 9.0)
+    - nanopb (~> 2.30908.0)
+    - PromisesObjC (~> 1.2)
   - FirebaseInstallations (8.1.0):
     - FirebaseCore (~> 8.0)
     - GoogleUtilities/Environment (~> 7.4)
@@ -114,6 +123,7 @@ PODS:
 
 DEPENDENCIES:
   - Firebase/Analytics
+  - Firebase/Crashlytics
   - RxAlamofire
   - RxCocoa (= 6.1.0)
   - RxDataSources (~> 5.0)
@@ -131,6 +141,7 @@ SPEC REPOS:
     - FirebaseAnalytics
     - FirebaseCore
     - FirebaseCoreDiagnostics
+    - FirebaseCrashlytics
     - FirebaseInstallations
     - GoogleAppMeasurement
     - GoogleDataTransport
@@ -154,6 +165,7 @@ SPEC CHECKSUMS:
   FirebaseAnalytics: e812eaae316ba8914b1ef06bef18f11efc1f56c6
   FirebaseCore: 389c4ce9a7cce4a7e25eb22326b4bee0050557b2
   FirebaseCoreDiagnostics: 3e249cee3de5c5f9cfd6cc2a19997231286fec11
+  FirebaseCrashlytics: 1b55b3a718f9e20d59d96db46a4652d95a8ba1d2
   FirebaseInstallations: 7f31798a8198c354eadcb87176d2090b62edc187
   GoogleAppMeasurement: 9ff7b9e23cced93a5a41736c09bdeb5b5b7fb111
   GoogleDataTransport: 11e3a5f2c190327df1a4a5d7e7ae3d4d5b9c9e4c
@@ -170,6 +182,6 @@ SPEC CHECKSUMS:
   SwipeTransition: 16257f6afc59a572e3b4635a329b10f7598ad269
   SwipeTransitionAutoSwipeBack: c3ec93a597b52e3d0e78f0d8f801867b514fb07b
 
-PODFILE CHECKSUM: c5f9fabf7fb099891415823db293c48165b90ac4
+PODFILE CHECKSUM: 4912dac0873a5313be5be5af6d8788cfb8dbd7ee
 
 COCOAPODS: 1.10.1

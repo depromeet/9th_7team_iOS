@@ -245,6 +245,7 @@ class OptionDatasource: UICollectionViewDiffableDataSource<OptionSection, Option
                     guard let item = item, let self = self else { return }
                     let sections = self.snapshot().sectionIdentifiers
                     sections.forEach { $0.isExpanded = false }
+                    
                     item.isExpanded = true
                     self.headerSelectClosure?(sections)
             }).disposed(by: header.disposeBag)

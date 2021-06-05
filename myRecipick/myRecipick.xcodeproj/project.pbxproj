@@ -1040,7 +1040,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "${PODS_ROOT}/SwiftLint/swiftlint\n";
+			shellScript = "${PODS_ROOT}/SwiftLint/swiftlint\n\"${PODS_ROOT}/FirebaseCrashlytics/run\"\n";
 		};
 		78AC52AE2621D5BB002B7C02 /* SwiftGen Color Script */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1427,6 +1427,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = UY288B234M;
 				INFOPLIST_FILE = myRecipick/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (

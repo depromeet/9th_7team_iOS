@@ -51,7 +51,6 @@ extension MenuListViewController {
             collectionView.rx.setDelegate(self),
             collectionView.rx.modelSelected(MenuModel.self)
                 .bind(onNext: { [weak self] item in
-                print(item)
                 guard let parentVC = self?.parentVC as? CustomViewController else { return }
                     let vc = CustomOptionViewController.makeViewController(menu: item)
                 parentVC.navigationController?.pushViewController(vc, animated: true)
