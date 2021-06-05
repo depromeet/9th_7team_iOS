@@ -15,6 +15,9 @@ def common_pods
   pod 'RxCocoa', '6.1.0'
   pod 'RxDataSources', '~> 5.0'
   
+  #Firebase
+  pod 'Firebase/Analytics'
+  
 end
 
 def exceptTest

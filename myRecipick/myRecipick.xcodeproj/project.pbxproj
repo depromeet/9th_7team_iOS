@@ -22,6 +22,7 @@
 		397286E126616C5300D07056 /* Encodable + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 397286E026616C5300D07056 /* Encodable + Extensions.swift */; };
 		397286E426625C2E00D07056 /* CustomMenuNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 397286E226625C2E00D07056 /* CustomMenuNameViewController.swift */; };
 		397286E526625C2E00D07056 /* CustomMenuNameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 397286E326625C2E00D07056 /* CustomMenuNameViewController.xib */; };
+		39852661266B43FB006CED8F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 39852660266B43FA006CED8F /* GoogleService-Info.plist */; };
 		39A4492126426D90001DD3C4 /* ActivityIndicatorable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A4492026426D90001DD3C4 /* ActivityIndicatorable.swift */; };
 		39A4492526443907001DD3C4 /* CustomViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 39A4492426443907001DD3C4 /* CustomViewController.xib */; };
 		39A4492726443D70001DD3C4 /* BaseCustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A4492626443D70001DD3C4 /* BaseCustomView.swift */; };
@@ -199,6 +200,7 @@
 		397286E026616C5300D07056 /* Encodable + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encodable + Extensions.swift"; sourceTree = "<group>"; };
 		397286E226625C2E00D07056 /* CustomMenuNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMenuNameViewController.swift; sourceTree = "<group>"; };
 		397286E326625C2E00D07056 /* CustomMenuNameViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomMenuNameViewController.xib; sourceTree = "<group>"; };
+		39852660266B43FA006CED8F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		39A4492026426D90001DD3C4 /* ActivityIndicatorable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorable.swift; sourceTree = "<group>"; };
 		39A4492426443907001DD3C4 /* CustomViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomViewController.xib; sourceTree = "<group>"; };
 		39A4492626443D70001DD3C4 /* BaseCustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCustomView.swift; sourceTree = "<group>"; };
@@ -732,6 +734,7 @@
 				4F9DC6C82625168C00609CF0 /* TabCoordinator.swift */,
 				78D7682F262D89900010A07E /* MainTabBarViewController.swift */,
 				78C8C1622615C45600F84CAB /* LaunchScreen.storyboard */,
+				39852660266B43FA006CED8F /* GoogleService-Info.plist */,
 				78C8C1652615C45600F84CAB /* Info.plist */,
 			);
 			path = myRecipick;
@@ -990,6 +993,7 @@
 				39A4492526443907001DD3C4 /* CustomViewController.xib in Resources */,
 				393ACCDA2657B73D003E8A13 /* CustomOptionSubTitleCell.xib in Resources */,
 				39D9D59C264EAA09000434B7 /* MenuCategoryBar.xib in Resources */,
+				39852661266B43FB006CED8F /* GoogleService-Info.plist in Resources */,
 				78AC52BC2621D75D002B7C02 /* Colors.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
