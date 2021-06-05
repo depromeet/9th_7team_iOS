@@ -15,7 +15,6 @@
                 <outlet property="doneButton" destination="ciS-lc-dvd" id="xYQ-ku-HZj"/>
                 <outlet property="navigationView" destination="1T9-v1-e7a" id="Bex-vE-zoO"/>
                 <outlet property="optionImageView" destination="XBC-Hf-h7p" id="lTU-3G-qGX"/>
-                <outlet property="resetButton" destination="7Ij-jx-opJ" id="Wwa-Rm-fGi"/>
                 <outlet property="resetView" destination="HBS-hH-FYe" id="Cgf-2Z-X5X"/>
                 <outlet property="tableTopView" destination="gEE-H8-4d1" id="5zi-IM-WdV"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -38,16 +37,8 @@
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HBS-hH-FYe" customClass="TopConerRadiusView" customModule="myRecipick" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="160" width="390" height="64"/>
-                            <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Ij-jx-opJ">
-                                    <rect key="frame" x="320" y="22" width="46" height="30"/>
-                                    <state key="normal" title="Button"/>
-                                </button>
-                            </subviews>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <constraints>
-                                <constraint firstAttribute="trailing" secondItem="7Ij-jx-opJ" secondAttribute="trailing" constant="24" id="PT3-Bs-s0Y"/>
-                                <constraint firstAttribute="bottom" secondItem="7Ij-jx-opJ" secondAttribute="bottom" constant="12" id="R0n-75-sNw"/>
                                 <constraint firstAttribute="height" constant="64" id="TlS-ys-lDX"/>
                             </constraints>
                         </view>

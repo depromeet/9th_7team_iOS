@@ -24,11 +24,6 @@ class CustomOptionViewModel {
         saveEnable.asObservable()
     }
     
-    let resetEnable = BehaviorRelay<Bool>(value: false)
-    var resetEnableObservable: Observable<Bool> {
-        resetEnable.asObservable()
-    }
-    
     let isLoading = BehaviorRelay<Bool>(value: false)
     
     var disposeBag = DisposeBag()
@@ -53,19 +48,6 @@ class CustomOptionViewModel {
                 .allSatisfy { $0 }
             }.subscribe(onSuccess: { isOn in
                 self.saveEnable.accept(isOn)
-            })
-    }
-    
-    func resetEnableCheck() -> Disposable {
-        return Single.just(optionList.value)
-            .map {
-                $0.map { item -> Bool in
-                    let selected = item.items.filter { $0.isSelected }
-                    return selected.isEmpty
-                }
-                .contains(true)
-            }.subscribe(onSuccess: { isOn in
-                self.resetEnable.accept(isOn)
             })
     }
 

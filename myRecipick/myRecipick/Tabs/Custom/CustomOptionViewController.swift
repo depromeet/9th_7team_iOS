@@ -23,8 +23,7 @@ class CustomOptionViewController: UIViewController, ClassIdentifiable, ActivityI
     @IBOutlet weak var navigationView: CustomNavigationView!
     @IBOutlet weak var tableTopView: UIView!
     @IBOutlet weak var optionImageView: UIImageView!
-    @IBOutlet weak var resetView: TopConerRadiusView!
-    @IBOutlet weak var resetButton: UIButton!
+    @IBOutlet weak var resetView: UIView!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var doneButton: UIButton!
     
@@ -35,7 +34,6 @@ class CustomOptionViewController: UIViewController, ClassIdentifiable, ActivityI
     } cellSelectClosure: { [weak self] item in
         guard let self = self else { return }
         self.viewModel.selectAction().disposed(by: self.disposeBag)
-        self.viewModel.resetEnableCheck().disposed(by: self.disposeBag)
         self.showInfo(item: item)
     }
     
@@ -80,23 +78,7 @@ class CustomOptionViewController: UIViewController, ClassIdentifiable, ActivityI
     private func initTableTopView() {
         tableTopView.backgroundColor = Colors.grayScaleEE.color
         setMenuImage()
-//        resetView.roundCorners(corners: [.topLeft, .topRight], radius: 25)
-        resetButton.setTitle("초기화", for: .normal)
-        resetButton.setTitleColor(Colors.grayScale66.color, for: .normal)
-        resetButton.setTitleColor(Colors.grayScaleEE.color, for: .disabled)
-        resetButton.titleLabel?.font = .myRecipickFont(.button)
-        
-        viewModel.resetEnableObservable
-            .bind(to: resetButton.rx.isEnabled)
-            .disposed(by: disposeBag)
-
-        resetButton.rx.tap
-            .subscribe(onNext: { [weak self] in
-                guard let self = self else { return }
-                self.viewModel.fetchOption()
-                self.setMenuImage()
-            }).disposed(by: disposeBag)
-        
+        resetView.roundCorners(corners: [.topLeft, .topRight], radius: 25)
     }
     
     private func setMenuImage() {
