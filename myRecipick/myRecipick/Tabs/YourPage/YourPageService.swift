@@ -37,7 +37,7 @@ class YourPageService: YourPageServiceProtocol {
         return Observable.create { [weak self] emitter in
             guard let self = self else { return Disposables.create() }
             self.requestYourCustomMenus()
-                .subscribe(onNext: { [weak self] responseJson in
+                .subscribe(onNext: { responseJson in
                     var items: [CustomMenuObjModel] = []
                     for i in 0..<responseJson.count {
                         let item: JSON = responseJson[i]

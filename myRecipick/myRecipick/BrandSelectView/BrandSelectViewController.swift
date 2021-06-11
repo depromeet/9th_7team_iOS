@@ -70,7 +70,7 @@ class BrandSelectViewController: UIViewController, MVVMViewControllerProtocol, C
             
             vm.outputs.brands
                 .observe(on: MainScheduler.instance)
-                .bind(to: self.collectionView.rx.items(cellIdentifier: BrandSelectCollectionViewCell.identifier, cellType: BrandSelectCollectionViewCell.self)) { [weak self] index, element, cell in
+                .bind(to: self.collectionView.rx.items(cellIdentifier: BrandSelectCollectionViewCell.identifier, cellType: BrandSelectCollectionViewCell.self)) { index, element, cell in
                     cell.infoData = element
                 }
                 .disposed(by: self.disposeBag)

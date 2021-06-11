@@ -198,7 +198,6 @@ extension CommonWebViewController: WKUIDelegate, WKNavigationDelegate, UIScrollV
         UIView.animate(withDuration: 0.3, delay: 1, options: .curveEaseInOut, animations: {
             self.progressBar.alpha = 0
         }, completion: nil)
-        UIApplication.shared.isNetworkActivityIndicatorVisible = false
     }
     
     func webView(_ webView: WKWebView, didCommit navigation: WKNavigation!) {
@@ -214,7 +213,6 @@ extension CommonWebViewController: WKUIDelegate, WKNavigationDelegate, UIScrollV
     func webView(webView: WKWebView, navigation: WKNavigation, withError error: NSError) {
         progressBar.setProgress(1, animated: true)
         UIView.animate(withDuration: 0.3, delay: 1, options: .curveEaseInOut, animations: { self.progressBar.alpha = 0 }, completion: nil)
-        UIApplication.shared.isNetworkActivityIndicatorVisible = false
         let alert: UIAlertController = UIAlertController(title: "Error", message: "Could not load webpage", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
         present(alert, animated: true) {
