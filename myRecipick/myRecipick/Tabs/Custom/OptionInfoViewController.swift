@@ -10,9 +10,10 @@ import UIKit
 
 class OptionInfoViewController: UIViewController, ClassIdentifiable {
     
-    static func makeViewController(item: OptionModel) -> OptionInfoViewController {
+    static func makeViewController(name: String, item: OptionInfo) -> OptionInfoViewController {
         let vc = OptionInfoViewController(nibName: self.identifier, bundle: nil)
         vc.optionItem = item
+        vc.name = name
         vc.modalPresentationStyle = .overFullScreen
         vc.modalTransitionStyle = .crossDissolve
         return vc
@@ -25,7 +26,8 @@ class OptionInfoViewController: UIViewController, ClassIdentifiable {
     @IBOutlet weak var infoLabel: UILabel!
     @IBOutlet weak var kcalLabel: UILabel!
     
-    private var optionItem: OptionModel?
+    private var optionItem: OptionInfo?
+    private var name: String?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,8 +59,9 @@ class OptionInfoViewController: UIViewController, ClassIdentifiable {
     }
     
     private func bindData() {
-        guard let item = optionItem else { return }
-        nameLabel.text = item.name
+        guard let item = optionItem,
+              let name = self.name else { return }
+        nameLabel.text = name
         infoLabel.text = item.description
         kcalLabel.text = item.calorie
         

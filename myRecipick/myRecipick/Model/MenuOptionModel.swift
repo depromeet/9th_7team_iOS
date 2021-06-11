@@ -29,10 +29,15 @@ struct OptionKindModel: Decodable {
 struct OptionModel: Decodable {
     let type: OptionType
     let name: String
+    let info: OptionInfo?
+    let image: String
+    let order: Int
+}
+
+struct OptionInfo: Decodable {
     let description: String?
     let calorie: String?
     let image: String
-    let order: Int
 }
 
 struct PolicyModel: Decodable {

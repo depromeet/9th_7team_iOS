@@ -57,16 +57,17 @@ class CustomOptionSubTitleCell: UICollectionViewCell, ClassIdentifiable {
             imageView.highlightedImage = nil
         }
         
-        if item.calorie != nil || item.description != nil {
+        if item.info != nil {
             questionButton.isHidden = false
         }
         
     }
     
     @IBAction func tapButton(_ sender: UIButton) {
-        guard let item = optionModel else { return }
+        guard let item = optionModel,
+              let info = item.info else { return }
         if let baseVC = vc as? CustomOptionViewController {
-            let vc = OptionInfoViewController.makeViewController(item: item)
+            let vc = OptionInfoViewController.makeViewController(name: item.name, item: info)
             baseVC.present(vc, animated: true, completion: nil)
         }
     }

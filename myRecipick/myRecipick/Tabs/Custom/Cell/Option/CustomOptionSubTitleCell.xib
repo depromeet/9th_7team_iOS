@@ -35,12 +35,12 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pef-ly-9VS">
-                                <rect key="frame" x="271" y="27" width="20" height="20"/>
+                                <rect key="frame" x="261" y="22" width="30" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="20" id="IWD-9A-bVX"/>
-                                    <constraint firstAttribute="width" constant="20" id="dHZ-Y7-xWc"/>
+                                    <constraint firstAttribute="height" constant="30" id="IWD-9A-bVX"/>
+                                    <constraint firstAttribute="width" constant="30" id="dHZ-Y7-xWc"/>
                                 </constraints>
-                                <state key="normal" title="Button" image="iconQuestion"/>
+                                <state key="normal" image="iconQuestion"/>
                                 <connections>
                                     <action selector="tapButton:" destination="gTV-IL-0wX" eventType="touchUpInside" id="gH5-cJ-Re3"/>
                                 </connections>
