@@ -21,7 +21,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a0b-mZ-eUH">
                         <rect key="frame" x="0.0" y="0.0" width="383" height="65"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="lkU-Wr-r22">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="lkU-Wr-r22">
                                 <rect key="frame" x="26" y="10" width="41.5" height="45"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kiz-mS-PMb">
@@ -48,6 +48,9 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="divider" translatesAutoresizingMaskIntoConstraints="NO" id="VPo-fF-a9q">
                                 <rect key="frame" x="0.0" y="0.0" width="383" height="1"/>
                             </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Tooltip" translatesAutoresizingMaskIntoConstraints="NO" id="pet-NJ-9XE">
+                                <rect key="frame" x="79.5" y="10.5" width="122" height="20"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
@@ -60,8 +63,10 @@
                             <constraint firstItem="VPo-fF-a9q" firstAttribute="leading" secondItem="a0b-mZ-eUH" secondAttribute="leading" id="FKq-w3-jsy"/>
                             <constraint firstAttribute="trailing" secondItem="VPo-fF-a9q" secondAttribute="trailing" id="gD0-rz-cyP"/>
                             <constraint firstAttribute="trailing" secondItem="fYV-8Z-Gl6" secondAttribute="trailing" constant="22" id="lP6-em-fa0"/>
+                            <constraint firstItem="pet-NJ-9XE" firstAttribute="leading" secondItem="kiz-mS-PMb" secondAttribute="trailing" constant="12" id="q9K-2K-Is3"/>
                             <constraint firstItem="lkU-Wr-r22" firstAttribute="leading" secondItem="a0b-mZ-eUH" secondAttribute="leading" constant="26" id="r6F-oa-fEn"/>
                             <constraint firstItem="lkU-Wr-r22" firstAttribute="top" secondItem="a0b-mZ-eUH" secondAttribute="top" constant="10" id="tYw-om-j2X"/>
+                            <constraint firstItem="pet-NJ-9XE" firstAttribute="centerY" secondItem="kiz-mS-PMb" secondAttribute="centerY" id="zSp-pE-e9f"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -79,11 +84,13 @@
                 <outlet property="contentsView" destination="a0b-mZ-eUH" id="QuY-Xe-1ah"/>
                 <outlet property="optionLabel" destination="1aW-nQ-pqu" id="4Rd-uK-wn1"/>
                 <outlet property="titleLabel" destination="kiz-mS-PMb" id="0xY-bg-d1v"/>
+                <outlet property="tooltip" destination="pet-NJ-9XE" id="OLk-MU-z6H"/>
             </connections>
             <point key="canvasLocation" x="148.55072463768118" y="132.25446428571428"/>
         </collectionViewCell>
     </objects>
     <resources>
+        <image name="Tooltip" width="122" height="20"/>
         <image name="divider" width="375" height="1"/>
         <image name="iconsNavigation24ArrowClose" width="28" height="28"/>
         <systemColor name="systemBackgroundColor">

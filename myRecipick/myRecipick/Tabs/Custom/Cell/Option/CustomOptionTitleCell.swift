@@ -9,6 +9,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import Combine
 
 class CustomOptionTitleCell: UICollectionViewCell, ClassIdentifiable {
 
@@ -16,6 +17,7 @@ class CustomOptionTitleCell: UICollectionViewCell, ClassIdentifiable {
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet weak var optionLabel: UILabel!
     @IBOutlet weak var arrowImageView: UIImageView!
+    @IBOutlet weak var tooltip: UIImageView!
     
     var tapObservable: Observable<Void> {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tabAction))
@@ -23,6 +25,7 @@ class CustomOptionTitleCell: UICollectionViewCell, ClassIdentifiable {
         return tapGesture.rx.event.map { _ in () }
     }
     var disposeBag = DisposeBag()
+    var cancellable: Cancellable?
     
     // Configure
     var section: OptionSection? = nil {
@@ -36,11 +39,33 @@ class CustomOptionTitleCell: UICollectionViewCell, ClassIdentifiable {
         super.awakeFromNib()
         
         initLabels()
+        initToolTip()
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
         
+    }
+    
+    // MARK: - Combine
+    func bindArrayDirection() {
+        cancellable = section?.$isExpanded.sink(receiveValue: { [weak self] isExpanded in
+            self?.rotateArrowAnimation(isExpanded: isExpanded)
+            self?.tooltipAnimation(isExpanded: isExpanded)
+        })
+    }
+    
+    private func rotateArrowAnimation(isExpanded: Bool) {
+        UIView.animate(withDuration: 0.3) {
+            self.arrowImageView.transform = isExpanded ? self.arrowImageView.transform.rotated(by: .pi) : .identity
+        }
+    }
+    
+    private func tooltipAnimation(isExpanded: Bool) {
+        guard let section = self.section else { return }
+        UIView.transition(with: self.tooltip, duration: 0.3, options: .transitionCrossDissolve, animations: {
+            self.tooltip.isHidden = section.isSingleSelection ? section.isSingleSelection : !isExpanded
+        })
     }
     
     private func initLabels() {
@@ -55,6 +80,10 @@ class CustomOptionTitleCell: UICollectionViewCell, ClassIdentifiable {
         
         arrowImageView.image = Images.iconsNavigation24ArrowClose.image.withRenderingMode(.alwaysTemplate)
         arrowImageView.tintColor = Colors.grayScale99.color
+    }
+    
+    private func initToolTip() {
+        tooltip.isHidden = true
     }
     
     func updateSelectedMenu(with names: String) {

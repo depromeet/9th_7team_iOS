@@ -244,9 +244,9 @@ class OptionDatasource: UICollectionViewDiffableDataSource<OptionSection, Option
                 .subscribe(onNext: { [weak item, weak self] in
                     guard let item = item, let self = self else { return }
                     let sections = self.snapshot().sectionIdentifiers
+                    let isExpanded = !item.isExpanded
                     sections.forEach { $0.isExpanded = false }
-                    
-                    item.isExpanded = true
+                    item.isExpanded = isExpanded
                     self.headerSelectClosure?(sections)
             }).disposed(by: header.disposeBag)
             
@@ -255,6 +255,7 @@ class OptionDatasource: UICollectionViewDiffableDataSource<OptionSection, Option
                     header.updateSelectedMenu(with: $0)
                 })
                 .disposed(by: header.disposeBag)
+            header.bindArrayDirection()
             
             return header
         }

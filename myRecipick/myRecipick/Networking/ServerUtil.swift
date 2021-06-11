@@ -96,7 +96,7 @@ extension Observable where Element == (HTTPURLResponse, Any) {
 
 
 extension Session {
-    fileprivate func httpRequest(with httpRequest: HttpRequest, baseUrl: APIDefine.BaseUrl = .test) -> Observable<(HTTPURLResponse, Any)> {
+    fileprivate func httpRequest(with httpRequest: HttpRequest, baseUrl: APIDefine.BaseUrl = .v1) -> Observable<(HTTPURLResponse, Any)> {
         let baseURL = baseUrl.rawValue
         return Session.default.rx.responseJSON(httpRequest.alamofireMethod,
                                                baseURL + httpRequest.url,

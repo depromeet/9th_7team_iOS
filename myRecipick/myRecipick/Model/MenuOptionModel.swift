@@ -64,7 +64,7 @@ enum OptionType: Decodable {
 class OptionSection: Hashable {
     let option: OptionKindModel
     let isSingleSelection: Bool
-    var isExpanded = false
+    @Published var isExpanded = false
     var items: [OptionItem] = []
     
     let selectedItemsName = BehaviorRelay<String>(value: "")
